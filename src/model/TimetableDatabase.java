@@ -45,9 +45,8 @@ public class TimetableDatabase implements AccessTimetableDatabase {
 	}
 
 	@Override
-	public void viewCourseTimetable() {
-		// TODO Auto-generated method stub
-		
+	public String viewCourseTimetable(String courseName) {
+		return tt.getCourseTimetable(courseName);
 	}
 
 	@Override

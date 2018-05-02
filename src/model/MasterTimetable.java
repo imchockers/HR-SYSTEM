@@ -22,4 +22,11 @@ public class MasterTimetable {
 		newDiscipline.addClass(course, className);
 		disciplines.add(newDiscipline);
 	}
+	
+	public String getCourseTimetable(String courseName) {
+		String retStr = new String();
+		for (Discipline d: disciplines) {
+			retStr.concat(d.getCourseTimetable());
+		}
+	}
 }

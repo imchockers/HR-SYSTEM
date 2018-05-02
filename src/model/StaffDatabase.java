@@ -15,32 +15,32 @@ public class StaffDatabase implements AccessStaffDatabase {
 		for (StaffMember s: staff)
 			if (s.compareID(userID) && s.comparePwd(pwd)) {
 				System.out.println("Valid Login");
-				return createController(s.getID(), s.getPrivilege());
+				return createController(s.getID(), s.getPrivilege(), s.getCourseName());
 			}
 		System.out.println("Invalid Login");
 		return null;
 	}
 	
-	private StaffController createController(String ID, int privilege) {
+	private StaffController createController(String ID, int privilege, String courseName) {
 		switch (privilege) {
 			case 0: return new SessionalController(ID);
 			
 			case 1: return new TimeApproverController(ID);
 			
-			case 2: return new CourseCoordinatorController(ID);
+			case 2: return new CourseCoordinatorController(ID, courseName);
 			
 			case 3: return new TimeAdminController(ID);
 		}
 		return null;
 	}
 
-	public void addStaff(String userID, String pwd, int privilege) {
-		staff.add(new StaffMember(userID, pwd, privilege));
+	public void addStaff(String userID, String pwd, int privilege, String courseName) {
+		staff.add(new StaffMember(userID, pwd, privilege, courseName));
 	}
 
 	public ArrayList<StaffMember> getData() { return staff; }
 
-	public String createStaff(String userID, String pwd, int privilege) {
+	public String createStaff(String userID, String pwd, int privilege, String courseName) {
 		String failureReason = null;
 		
 		if (staffExists(userID)) {
@@ -56,7 +56,7 @@ public class StaffDatabase implements AccessStaffDatabase {
 		if (failureReason != null)
 			return new String("Create Staff failed: " + failureReason);
 		
-		addStaff(userID, pwd, privilege);
+		addStaff(userID, pwd, privilege, courseName);
 		
 		return new String("Create Staff Successful: " + userID + " " + privilege);
 		

@@ -57,8 +57,9 @@ public abstract class StaffController implements AccessTimetableDatabase, Access
 		db.approveStaffAssignment();
 	}
 	
-	public void viewCourseTimetable() {
-		db.viewCourseTimetable();
+	public String viewCourseTimetable(String courseName) {
+		defaultView.println(db.viewCourseTimetable(courseName));
+		return null;
 	}
 	
 	public void editClass() {
@@ -85,6 +86,8 @@ public abstract class StaffController implements AccessTimetableDatabase, Access
 		String userID = defaultView.getInput("Enter new staff UserID: ");
 		String pwd = defaultView.getInput("Enter Password (>=8 characters): ");
 		int privilege = 0;
+		String courseName = "";
+		
 		try {
 			privilege = Integer.parseInt(defaultView.getInput("Enter Privilege Level (0-3): "));
 		} catch (NumberFormatException e) {
@@ -92,7 +95,12 @@ public abstract class StaffController implements AccessTimetableDatabase, Access
 		}
 		
 		
-		return db.createStaff(userID, pwd, privilege);
+		
+		if (privilege == 2)
+			defaultView.getInput("Enter Course Name: ");
+		
+		
+		return db.createStaff(userID, pwd, privilege, courseName);
 	}
 	
 	public void viewEligibleStaff() {

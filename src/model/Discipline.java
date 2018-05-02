@@ -27,5 +27,14 @@ public class Discipline {
 		courses.add(newCourse);
 		
 	}
+	
+	public String getCourseTimetable(String courseName) {
+		String retStr = new String();
+		
+		for (Course c: courses) {
+			if (c.getName().compareTo(courseName) == 0)
+				retStr.concat(c.getCourseTimetable());
+		}
+	}
 
 }

@@ -12,7 +12,7 @@ public interface AccessTimetableDatabase {
 	
 	public abstract void approveStaffAssignment();
 	
-	public abstract void viewCourseTimetable();
+	public abstract String viewCourseTimetable(String courseName);
 	
 	public abstract void editClass();
 	

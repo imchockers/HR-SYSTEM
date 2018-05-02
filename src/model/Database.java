@@ -20,8 +20,8 @@ public class Database implements AccessTimetableDatabase, AccessStaffDatabase {
 	}
 	
 	// Create and Assign Staff
-	public void addStaff(String userID, String pwd, int privilege) {
-		staffDb.addStaff(userID, pwd, privilege);
+	public void addStaff(String userID, String pwd, int privilege, String courseName) {
+		staffDb.addStaff(userID, pwd, privilege, courseName);
 	}
 	
 	public void assignStaffToClass() {}
@@ -34,7 +34,9 @@ public class Database implements AccessTimetableDatabase, AccessStaffDatabase {
 	
 	public void approveStaffAssignment() {}
 	
-	public void viewCourseTimetable() {}
+	public String viewCourseTimetable(String courseName) {
+		return ttDb.viewCourseTimetable(courseName);
+	}
 	
 	public void editClass() {}
 	
@@ -46,8 +48,8 @@ public class Database implements AccessTimetableDatabase, AccessStaffDatabase {
 	
 	public void rejectOffer() {}
 	
-	public String createStaff(String userID, String pwd, int privilege) {
-		staffDb.addStaff(userID, pwd, privilege);
+	public String createStaff(String userID, String pwd, int privilege, String courseName) {
+		staffDb.addStaff(userID, pwd, privilege, courseName);
 		
 		return null;
 	}

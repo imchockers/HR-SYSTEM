@@ -5,9 +5,10 @@ public class StaffMember {
 	private String userID;
 	private String pwd;
 	private int privilege;
+	private String courseName;
 	
 	
-	public StaffMember(String userID, String pwd, int privilege) {
+	public StaffMember(String userID, String pwd, int privilege, String courseName) {
 		this.userID = userID;
 		this.pwd = pwd;
 		this.privilege = privilege;
@@ -35,5 +36,7 @@ public class StaffMember {
 
 
 	public int getPrivilege() { return privilege; }
+	
+	public String getCourseName() { return courseName; }
 	
 }

@@ -9,9 +9,11 @@ public class CourseCoordinatorController extends StaffController {
 	private static final String EXIT = "exit";
 	private static final String VIEW_COMMANDS = "viewcommands";
 	
+	private String courseName;
 	
-	public CourseCoordinatorController(String ID) {
+	public CourseCoordinatorController(String ID, String courseName) {
 		super(ID);
+		this.setCourseName(courseName);
 	}
 	
 	private void viewCommands() {
@@ -48,7 +50,7 @@ public class CourseCoordinatorController extends StaffController {
 					break;
 				
 				case VIEW_COURSE_TIMETABLE:
-					viewCourseTimetable();
+					viewCourseTimetable(courseName);
 					break;
 				
 				case EDIT_CLASS:
@@ -59,6 +61,14 @@ public class CourseCoordinatorController extends StaffController {
 			
 		}
 		
+	}
+
+	public String getCourseName() {
+		return courseName;
+	}
+
+	public void setCourseName(String courseName) {
+		this.courseName = courseName;
 	}
 	
 
