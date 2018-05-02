@@ -81,8 +81,18 @@ public abstract class StaffController implements AccessTimetableDatabase, Access
 		db.rejectOffer();
 	}
 	
-	public void createStaff() {
-		db.createStaff();
+	public String createStaff() {
+		String userID = defaultView.getInput("Enter new staff UserID: ");
+		String pwd = defaultView.getInput("Enter Password (>=8 characters): ");
+		int privilege = 0;
+		try {
+			privilege = Integer.parseInt(defaultView.getInput("Enter Privilege Level (0-3): "));
+		} catch (NumberFormatException e) {
+			return new String("NumberFormatException: Enter an integer.");
+		}
+		
+		
+		return db.createStaff(userID, pwd, privilege);
 	}
 	
 	public void viewEligibleStaff() {

@@ -46,12 +46,22 @@ public class Database implements AccessTimetableDatabase, AccessStaffDatabase {
 	
 	public void rejectOffer() {}
 	
-	public void createStaff() {}
+	public String createStaff(String userID, String pwd, int privilege) {
+		staffDb.addStaff(userID, pwd, privilege);
+		
+		return null;
+	}
 	
 	public void viewEligibleStaff() {}
 	
 	public void submitAvailabilities() {}
 	
 	public void viewStaffMember() {}
+
+	@Override
+	public String createStaff() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

@@ -40,9 +40,25 @@ public class StaffDatabase implements AccessStaffDatabase {
 
 	public ArrayList<StaffMember> getData() { return staff; }
 
-	@Override
-	public void createStaff() {
-		// TODO Auto-generated method stub
+	public String createStaff(String userID, String pwd, int privilege) {
+		String failureReason = null;
+		
+		if (staffExists(userID)) {
+			failureReason = new String("Staff Member Exists!");
+		}
+		else if (pwd.length() < 8) {
+			failureReason = new String("Password Insecure!");
+		}
+		else if (privilege < 0 && privilege > 3) {
+			failureReason = new String("Invalid Privilege Level!");
+		}
+		
+		if (failureReason != null)
+			return new String("Create Staff failed: " + failureReason);
+		
+		addStaff(userID, pwd, privilege);
+		
+		return new String("Create Staff Successful: " + userID + " " + privilege);
 		
 	}
 
@@ -62,6 +78,21 @@ public class StaffDatabase implements AccessStaffDatabase {
 	public void viewStaffMember() {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	private boolean staffExists(String userID) {
+		for (StaffMember s: staff) {
+			if (s.compareID(userID))
+				return true;
+		}
+		
+		return false;
+	}
+
+	@Override
+	public String createStaff() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

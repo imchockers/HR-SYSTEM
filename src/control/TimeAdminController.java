@@ -2,6 +2,9 @@ package control;
 
 public class TimeAdminController extends StaffController {
 
+	private static final String INPUT_TIMETABLE_DATA = "inputtimetabledata";
+	private static final String CREATE_STAFF = "createstaff";
+	private static final String CALL_REPORTS = "callreports";
 	private static final String VIEW_COURSE_TIMETABLE = "viewcoursetimetable";
 	private static final String VIEW_ELIGIBLE_STAFF = "vieweligiblestaff";
 	private static final String ASSIGN_STAFF_TO_CLASS = "assignstafftoclass";
@@ -16,7 +19,10 @@ public class TimeAdminController extends StaffController {
 	}
 	
 	private void viewCommands() {
-		super.viewCommands(	VIEW_COURSE_TIMETABLE + "\n" +
+		super.viewCommands(	INPUT_TIMETABLE_DATA + "\n" +
+							CREATE_STAFF + "\n" +
+							CALL_REPORTS + "\n" +
+							VIEW_COURSE_TIMETABLE + "\n" +
 							VIEW_ELIGIBLE_STAFF + "\n" +
 							ASSIGN_STAFF_TO_CLASS + "\n" +
 							EDIT_CLASS + "\n" +
@@ -40,6 +46,18 @@ public class TimeAdminController extends StaffController {
 					
 				case VIEW_COMMANDS:
 					viewCommands();
+					break;
+				
+				case INPUT_TIMETABLE_DATA:
+					inputTimetableData();
+					break;
+					
+				case CREATE_STAFF:
+					createStaff();
+					break;
+					
+				case CALL_REPORTS:
+					callReports();
 					break;
 				
 				case ASSIGN_STAFF_TO_CLASS:

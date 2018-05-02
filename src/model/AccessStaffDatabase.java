@@ -2,7 +2,7 @@ package model;
 
 public interface AccessStaffDatabase {
 	
-	public void createStaff();
+	public String createStaff();
 	
 	public void viewEligibleStaff();
 	
