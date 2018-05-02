@@ -2,6 +2,8 @@ package control;
 
 public class CourseCoordinatorController extends StaffController {
 	
+	private static final String VIEW_COURSE_TIMETABLE = "ViewCourseTimetable";
+	
 	public CourseCoordinatorController(String ID) {
 		super(ID);
 	}
