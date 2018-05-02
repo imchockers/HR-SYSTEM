@@ -43,5 +43,28 @@ public abstract class StaffController {
 	
 	public abstract void getCommands();
 	
+	public void callReports() {}
+	
+	public void approveStaffAssignment() {}
+	
+	public void viewPendingApprovals() {}
+	
+	public void viewCourseTimetable() {}
+	
+	public void viewAvailableStaff() {}
+	
+	public void assignStaffToClass() {}
+	
+	public void editClass() {}
+	
+	public void viewSessionalTimetable() {}
+	
+	public void submitAvailabilities() {}
+	
+	public void viewOffers() {}
+	
+	public void acceptOffer() {}
+	
+	public void rejectOffer() {}
 	
 }
