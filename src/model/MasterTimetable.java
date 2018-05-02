@@ -10,23 +10,25 @@ public class MasterTimetable {
 		disciplines = new ArrayList<Discipline>();
 	}
 	
-	public void addClass(String discipline, String course, String className) {
+	public void addClass(String discipline, String course, String className, String time, String day, String location, String staffID) {
 		for (Discipline d: disciplines) {
 			if (d.getName().compareTo(discipline) == 0) {
-				d.addClass(course, className);
+				d.addClass(course, className, time, day, location, staffID);
 				return;
 			}
 		}
 		
 		Discipline newDiscipline = new Discipline(discipline);
-		newDiscipline.addClass(course, className);
+		newDiscipline.addClass(course, className, time, day, location, staffID);
 		disciplines.add(newDiscipline);
 	}
 	
 	public String getCourseTimetable(String courseName) {
 		String retStr = new String();
 		for (Discipline d: disciplines) {
-			retStr.concat(d.getCourseTimetable());
+			retStr += d.getCourseTimetable(courseName);
 		}
+		
+		return retStr;
 	}
 }

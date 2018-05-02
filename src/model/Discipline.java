@@ -14,16 +14,16 @@ public class Discipline {
 	
 	public String getName() { return name; }
 
-	public void addClass(String course, String className) {
+	public void addClass(String course, String className, String time, String day, String location, String staffID) {
 		for (Course c: courses) {
 			if (c.getName().compareTo(course) == 0) {
-				c.addClass(className);
+				c.addClass(className, time, day, location, staffID);
 				return;
 			}
 		}
 		
 		Course newCourse = new Course(course);
-		newCourse.addClass(className);
+		newCourse.addClass(className, time, day, location, staffID);
 		courses.add(newCourse);
 		
 	}
@@ -33,8 +33,10 @@ public class Discipline {
 		
 		for (Course c: courses) {
 			if (c.getName().compareTo(courseName) == 0)
-				retStr.concat(c.getCourseTimetable());
+				retStr += c.getCourseTimetable();
 		}
+		
+		return retStr;
 	}
 
 }

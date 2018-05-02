@@ -17,8 +17,21 @@ public class Course {
 	public String getName() { return name; }
 
 
-	public void addClass(String className) {
-		classes.add(new ClassInstance(className));
+	public void addClass(String className, String time, String day, String location, String staffID) {
+		classes.add(new ClassInstance(className, time, day, location, staffID));
 	}
+
+
+	public String getCourseTimetable() {
+		String retStr = new String();
+		
+		for (ClassInstance c: classes) {
+			retStr += c.toString();
+		}
+		
+		return retStr;
+	}
+	
+	
 
 }

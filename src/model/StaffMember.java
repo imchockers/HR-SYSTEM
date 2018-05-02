@@ -12,6 +12,7 @@ public class StaffMember {
 		this.userID = userID;
 		this.pwd = pwd;
 		this.privilege = privilege;
+		this.courseName = courseName;
 	}
 
 

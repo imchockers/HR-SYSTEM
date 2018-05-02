@@ -8,8 +8,8 @@ public class TimetableDatabase implements AccessTimetableDatabase {
 		tt = new MasterTimetable();
 	}
 	
-	public void addClass(String discipline, String course, String classname) {
-		tt.addClass(discipline, course, classname);
+	public void addClass(String discipline, String course, String className, String time, String day, String location, String staffID) {
+		tt.addClass(discipline, course, className, time, day, location, staffID);
 	}
 
 	public MasterTimetable getData() { return tt; }

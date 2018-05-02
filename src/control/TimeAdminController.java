@@ -69,7 +69,7 @@ public class TimeAdminController extends StaffController {
 					break;
 				
 				case VIEW_COURSE_TIMETABLE:
-					viewCourseTimetable();
+					//viewCourseTimetable();
 					break;
 				
 				case EDIT_CLASS:

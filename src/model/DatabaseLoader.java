@@ -20,7 +20,7 @@ public class DatabaseLoader {
 			try {
 				String[] elements = fileInput.split(",");
 			
-				ttDb.addClass(elements[0], elements[1], elements[2]);
+				ttDb.addClass(elements[0], elements[1], elements[2], elements[3], elements[4], elements[5], elements[6]);
 			
 				System.out.println("Loaded class: " + elements[0] + " " + elements[1] + " " + elements[2]);
 			
