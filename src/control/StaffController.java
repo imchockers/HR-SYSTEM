@@ -1,20 +1,24 @@
 package control;
 
+import model.AccessStaffDatabase;
+import model.AccessTimetableDatabase;
 import model.Database;
 import view.ConsoleView;
 
-public abstract class StaffController {
+public abstract class StaffController implements AccessTimetableDatabase, AccessStaffDatabase {
 
 	private static Database db = new Database();
 	private static ConsoleView defaultView = new ConsoleView(System.in, System.out);
 	private ConsoleView privateView;
 	
 	private String userID;
-	
+
 	StaffController(String userID) {
 		privateView = new ConsoleView(System.in, System.out);
 		this.userID = userID;
 	}
+	
+	public abstract void getCommands();
 	
 	public static StaffController logIn() {
 		String userID = defaultView.getInput("Enter UserID: ");
@@ -23,48 +27,74 @@ public abstract class StaffController {
 		return db.logIn(userID, pwd);
 	}
 	
+	public void viewCommands(String commands) {
+		privateView.println(commands);
+	}
+	
 	public String getID() { return userID; }
 
 	public String getInput() {
 		return privateView.getInput("Enter Command: ");
 	}
 	
-	public void assignClass() {
-		
+	public void assignStaffToClass() {
+		db.assignStaffToClass();
 	}
 	
-	public void getEligibleStaff() {
-		
-	}
-
-	public void getUnassignedClasses() {
-		
+	public void inputTimetableData() {
+		db.inputTimetableData();
 	}
 	
-	public abstract void getCommands();
+	public void callReports() {
+		db.callReports();
+	}
 	
-	public void callReports() {}
+	public void viewPendingApprovals() {
+		db.viewPendingApprovals();
+	}
 	
-	public void approveStaffAssignment() {}
+	public void approveStaffAssignment() {
+		db.approveStaffAssignment();
+	}
 	
-	public void viewPendingApprovals() {}
+	public void viewCourseTimetable() {
+		db.viewCourseTimetable();
+	}
 	
-	public void viewCourseTimetable() {}
+	public void editClass() {
+		db.editClass();
+	}
 	
-	public void viewAvailableStaff() {}
+	public void viewSessionalTimetable() {
+		db.viewSessionalTimetable();
+	}
 	
-	public void assignStaffToClass() {}
+	public void viewOffers() {
+		db.viewOffers();
+	}
 	
-	public void editClass() {}
+	public void acceptOffer() {
+		db.acceptOffer();
+	}
 	
-	public void viewSessionalTimetable() {}
+	public void rejectOffer() {
+		db.rejectOffer();
+	}
 	
-	public void submitAvailabilities() {}
+	public void createStaff() {
+		db.createStaff();
+	}
 	
-	public void viewOffers() {}
+	public void viewEligibleStaff() {
+		db.viewEligibleStaff();
+	}
 	
-	public void acceptOffer() {}
+	public void submitAvailabilities() {
+		db.submitAvailabilities();
+	}
 	
-	public void rejectOffer() {}
+	public void viewStaffMember() {
+		db.viewStaffMember();
+	}
 	
 }

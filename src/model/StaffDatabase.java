@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 import control.*;
 
-public class StaffDatabase {
+public class StaffDatabase implements AccessStaffDatabase {
 
 	private ArrayList<StaffMember> staff;
 
@@ -11,7 +11,7 @@ public class StaffDatabase {
 		staff = new ArrayList<StaffMember>();
 	}
 	
-	public StaffController login(String userID, String pwd) {
+	public StaffController logIn(String userID, String pwd) {
 		for (StaffMember s: staff)
 			if (s.compareID(userID) && s.comparePwd(pwd)) {
 				System.out.println("Valid Login");
@@ -39,5 +39,29 @@ public class StaffDatabase {
 	}
 
 	public ArrayList<StaffMember> getData() { return staff; }
+
+	@Override
+	public void createStaff() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void viewEligibleStaff() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void submitAvailabilities() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void viewStaffMember() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

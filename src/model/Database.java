@@ -2,7 +2,7 @@ package model;
 
 import control.StaffController;
 
-public class Database {
+public class Database implements AccessTimetableDatabase, AccessStaffDatabase {
 
 	private TimetableDatabase ttDb;
 	private StaffDatabase staffDb;
@@ -16,7 +16,7 @@ public class Database {
 
 	// User Identification and Login System
 	public StaffController logIn(String userID, String pwd) {
-		return staffDb.login(userID, pwd);
+		return staffDb.logIn(userID, pwd);
 	}
 	
 	// Create and Assign Staff
@@ -24,31 +24,34 @@ public class Database {
 		staffDb.addStaff(userID, pwd, privilege);
 	}
 	
-	// Input timetabling data
+	public void assignStaffToClass() {}
+	
 	public void inputTimetableData() {}
 	
-	// Call reports
 	public void callReports() {}
-	
-	public void approveStaffAssignment() {}
 	
 	public void viewPendingApprovals() {}
 	
+	public void approveStaffAssignment() {}
+	
 	public void viewCourseTimetable() {}
-	
-	public void viewAvailableStaff() {}
-	
-	public void assignStaffToClass() {}
 	
 	public void editClass() {}
 	
 	public void viewSessionalTimetable() {}
-	
-	public void submitAvailabilities() {}
 	
 	public void viewOffers() {}
 	
 	public void acceptOffer() {}
 	
 	public void rejectOffer() {}
+	
+	public void createStaff() {}
+	
+	public void viewEligibleStaff() {}
+	
+	public void submitAvailabilities() {}
+	
+	public void viewStaffMember() {}
+	
 }
