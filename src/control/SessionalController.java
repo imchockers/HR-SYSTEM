@@ -2,13 +2,13 @@ package control;
 
 public class SessionalController extends StaffController {
 
-	private static final String VIEW_SESSIONAL_TIMETABLE = "viewsessionaltimetable";
+	private static final String VIEW_SESSIONAL_TIMETABLE = "timetable";
 	private static final String SUBMIT_AVAILABILITIES = "submitavailabilities";
-	private static final String VIEW_OFFERS = "viewoffers";
+	private static final String VIEW_OFFERS = "offers";
 	private static final String ACCEPT_OFFER = "acceptoffer";
 	private static final String REJECT_OFFER = "rejectoffer";
 	private static final String EXIT = "exit";
-	private static final String VIEW_COMMANDS = "viewcommands";
+	private static final String VIEW_COMMANDS = "commands";
 	
 	public SessionalController(String userID) {
 		super(userID);

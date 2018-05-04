@@ -2,10 +2,10 @@ package control;
 
 public class TimeApproverController extends StaffController {
 
-	private static final String APPROVE_STAFF_ASSIGNMENT = "approvestaffassignment";
-	private static final String VIEW_PENDING_APPROVALS = "viewpendingapprovals";
+	private static final String APPROVE_STAFF_ASSIGNMENT = "approvestaff";
+	private static final String VIEW_PENDING_APPROVALS = "viewapprovals";
 	private static final String EXIT = "exit";
-	private static final String VIEW_COMMANDS = "viewcommands";
+	private static final String VIEW_COMMANDS = "commands";
 	
 	public TimeApproverController(String userID) {
 		super(userID);

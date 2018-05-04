@@ -5,14 +5,14 @@ public class TimeAdminController extends StaffController {
 	private static final String INPUT_TIMETABLE_DATA = "inputtimetabledata";
 	private static final String CREATE_STAFF = "createstaff";
 	private static final String CALL_REPORTS = "callreports";
-	private static final String VIEW_COURSE_TIMETABLE = "viewcoursetimetable";
-	private static final String VIEW_ELIGIBLE_STAFF = "vieweligiblestaff";
-	private static final String ASSIGN_STAFF_TO_CLASS = "assignstafftoclass";
+	private static final String VIEW_COURSE_TIMETABLE = "timetable";
+	private static final String VIEW_ELIGIBLE_STAFF = "eligiblestaff";
+	private static final String ASSIGN_STAFF_TO_CLASS = "assignstaff";
 	private static final String EDIT_CLASS = "editclass";
-	private static final String APPROVE_STAFF_ASSIGNMENT = "approvestaffassignment";
-	private static final String VIEW_PENDING_APPROVALS = "viewpendingapprovals";
+	private static final String APPROVE_STAFF_ASSIGNMENT = "approvestaff";
+	private static final String VIEW_PENDING_APPROVALS = "approvals";
 	private static final String EXIT = "exit";
-	private static final String VIEW_COMMANDS = "viewcommands";
+	private static final String VIEW_COMMANDS = "commands";
 	
 	public TimeAdminController(String userID) {
 		super(userID);

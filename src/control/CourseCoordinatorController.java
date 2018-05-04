@@ -2,8 +2,8 @@ package control;
 
 public class CourseCoordinatorController extends StaffController {
 	
-	private static final String VIEW_COURSE_TIMETABLE = "viewtimetable";
-	private static final String VIEW_ELIGIBLE_STAFF = "vieweligiblestaff";
+	private static final String VIEW_COURSE_TIMETABLE = "timetable";
+	private static final String VIEW_ELIGIBLE_STAFF = "eligiblestaff";
 	private static final String ASSIGN_STAFF_TO_CLASS = "assignstaff";
 	private static final String EDIT_CLASS = "editclass";
 	private static final String EXIT = "exit";
