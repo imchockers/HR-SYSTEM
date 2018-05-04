@@ -209,11 +209,11 @@ public class Course {
 		return false;
 	}
 
-	public String export() {
+	public String export(String disciplineName) {
 		String retStr = new String();
 		
 		for (ClassInstance c: classes) {
-			retStr += "name," + c.export() + "\n";
+			retStr += disciplineName + "," + name + "," + c.export() + "\n";
 		}
 		
 		return retStr;

@@ -1,5 +1,6 @@
 package model;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
@@ -8,44 +9,52 @@ import java.util.Scanner;
 
 public class DatabaseLoader {
 	
-	private static final String LOGIN_DATA = "model/login.data";
-	private static final String TIMETABLE_DATA = "model/timetable.data";
+	private static final String LOGIN_DATA = "login.data";
+	private static final String TIMETABLE_DATA = "timetable.data";
 	
 	public static MasterTimetable loadTimetable() {
-		MasterTimetable ttDb = new MasterTimetable ();
+		MasterTimetable ttDb = new MasterTimetable();
 		
 		Scanner sc;
-		sc = new Scanner(ClassLoader.getSystemResourceAsStream(TIMETABLE_DATA));
-		sc.nextLine();
+		File fp = new File(TIMETABLE_DATA);
 		
-		String fileInput = sc.nextLine();
-		
-		while (fileInput != null) {
-			try {
-				String[] elements = fileInput.split(",");
+		try {
+			sc = new Scanner(fp);
 			
-				int classID = ttDb.inputTimetableData(elements[0], elements[1], elements[2]);
+			sc.nextLine();
+			
+			String fileInput = sc.nextLine();
+			
+			while (fileInput != null) {
+				try {
+					String[] elements = fileInput.split(",");
 				
-				ttDb.editClass(classID, elements[3], elements[4], elements[5], Integer.parseInt(elements[7]));
-			
-				if (!(elements[6].compareTo("unassigned") == 0)) {
-					if (elements[8].compareTo("true") == 0)
-						ttDb.assignStaffToClass(elements[6], classID);
-					if (elements[9].compareTo("true") == 0)
-						ttDb.approveStaffAssignment(classID);
-					if (elements[10].compareTo("true") == 0)
-						ttDb.acceptOffer(classID, elements[6]);
+					int classID = ttDb.inputTimetableData(elements[0], elements[1], elements[2]);
+					
+					ttDb.editClass(classID, elements[3], elements[4], elements[5], Integer.parseInt(elements[7]));
+				
+					if (!(elements[6].compareTo("unassigned") == 0)) {
+						if (elements[8].compareTo("true") == 0)
+							ttDb.assignStaffToClass(elements[6], classID);
+						if (elements[9].compareTo("true") == 0)
+							ttDb.approveStaffAssignment(classID);
+						if (elements[10].compareTo("true") == 0)
+							ttDb.acceptOffer(classID, elements[6]);
+					}
+					
+					System.out.println("Loaded class: " + elements[0] + " " + elements[1] + " " + elements[2]);
+				
+					fileInput = sc.nextLine();
+				} catch (NoSuchElementException e) {
+					break;
 				}
-				
-				System.out.println("Loaded class: " + elements[0] + " " + elements[1] + " " + elements[2]);
-			
-				fileInput = sc.nextLine();
-			} catch (NoSuchElementException e) {
-				break;
 			}
+			
+			sc.close();
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
+			System.exit(0);
 		}
-		
-		sc.close();
 
 		return ttDb;
 	}
@@ -54,26 +63,36 @@ public class DatabaseLoader {
 		StaffDatabase sDb = new StaffDatabase();
 		
 		Scanner sc;
-		sc = new Scanner(ClassLoader.getSystemResourceAsStream(LOGIN_DATA));
-		sc.nextLine();
+		File fp = new File(LOGIN_DATA);
 		
-		String fileInput = sc.nextLine();
-		
-		while (fileInput != null) {
-			try {
-				String[] elements = fileInput.split(",");
+		try {
+			sc = new Scanner(fp);
 			
-				sDb.createStaff(elements[0], elements[1], elements[2], elements[3], Integer.parseInt(elements[4]), elements[5]);
+			sc.nextLine();
+			
+			String fileInput = sc.nextLine();
+			
+			while (fileInput != null) {
+				try {
+					String[] elements = fileInput.split(",");
 				
-				System.out.println("Loaded Staff Member: " + elements[0]);
-			
-				fileInput = sc.nextLine();
-			} catch (NoSuchElementException e) {
-				break;
+					sDb.createStaff(elements[0], elements[1], elements[2], elements[3], Integer.parseInt(elements[4]), elements[5]);
+					
+					System.out.println("Loaded Staff Member: " + elements[0]);
+				
+					fileInput = sc.nextLine();
+				} catch (NoSuchElementException e) {
+					break;
+				}
 			}
+			
+			sc.close();
+			
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
+			System.exit(0);
 		}
 		
-		sc.close();
 
 		return sDb;
 	}

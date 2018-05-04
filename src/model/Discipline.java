@@ -207,7 +207,8 @@ public class Discipline {
 		String retStr = new String();
 		
 		for (Course c: courses) {
-			retStr += "name," + c.export();
+			System.out.println(name);
+			retStr += c.export(name);
 		}
 		
 		return retStr;
