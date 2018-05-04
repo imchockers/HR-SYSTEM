@@ -96,10 +96,9 @@ public class Course {
 	 */
 	public boolean approveStaffAssignment(int classID) {
 		for (ClassInstance c: classes)
-			if (c.getClassID() == classID) {
-				c.approve();
-				return true;
-			}
+			if (c.getClassID() == classID)
+				return c.approve();
+
 		return false;
 	}
 

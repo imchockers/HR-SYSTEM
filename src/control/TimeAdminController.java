@@ -57,7 +57,7 @@ public class TimeAdminController extends StaffController {
 					break;
 					
 				case CALL_REPORTS:
-					callReports();
+					//callReports();
 					break;
 				
 				case ASSIGN_STAFF_TO_CLASS:

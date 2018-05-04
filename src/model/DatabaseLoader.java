@@ -49,8 +49,8 @@ public class DatabaseLoader {
 			try {
 				String[] elements = fileInput.split(",");
 			
-				sDb.addStaff(elements[0], elements[1], Integer.parseInt(elements[2]), elements[3]);
-			
+				sDb.createStaff(elements[0], elements[1], elements[2], elements[3], Integer.parseInt(elements[4]), elements[5]);
+				
 				System.out.println("Loaded Staff Member: " + elements[0]);
 			
 				fileInput = sc.nextLine();

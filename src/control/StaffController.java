@@ -1,11 +1,9 @@
 package control;
 
-import model.AccessStaffDatabase;
-import model.AccessTimetableDatabase;
 import model.Database;
 import view.ConsoleView;
 
-public abstract class StaffController implements AccessTimetableDatabase, AccessStaffDatabase {
+public abstract class StaffController {
 
 	private static Database db = new Database();
 	private static ConsoleView defaultView = new ConsoleView(System.in, System.out);
@@ -38,81 +36,105 @@ public abstract class StaffController implements AccessTimetableDatabase, Access
 	}
 	
 	public void assignStaffToClass() {
-		db.assignStaffToClass();
+		String staffID = privateView.getInput("Enter user ID: ");
+		int classID = Integer.parseInt(privateView.getInput("Enter Class ID: "));
+		
+		privateView.println(db.assignStaffToClass(staffID, classID));
 	}
 	
 	public void inputTimetableData() {
-		db.inputTimetableData();
-	}
-	
-	public void callReports() {
-		db.callReports();
+		String discipline = privateView.getInput("Enter Discipline Name: ");
+		String course = privateView.getInput("Enter Course Name: ");
+		String className = privateView.getInput("Enter Class Name: ");
+		
+		db.inputTimetableData(discipline, course, className);
 	}
 	
 	public void viewPendingApprovals() {
-		db.viewPendingApprovals();
+		privateView.println(db.getPendingApprovals());
 	}
 	
 	public void approveStaffAssignment() {
-		db.approveStaffAssignment();
+		int classID = Integer.parseInt(privateView.getInput("Enter Class ID: "));
+
+		if(db.approveStaffAssignment(classID))
+			privateView.println("Approval Successful!");
+		else
+			privateView.println("Approval Failed!");
 	}
 	
 	public String viewCourseTimetable(String courseName) {
-		defaultView.println(db.viewCourseTimetable(courseName));
+		privateView.println(db.getCourseTimetable(courseName));
 		return null;
 	}
 	
 	public void editClass() {
-		db.editClass();
+		int classID = Integer.parseInt(privateView.getInput("Enter Class ID: "));
+		String location = privateView.getInput("Enter Location (xx.xx.xx): ");
+		String time = privateView.getInput("Enter Time 24hr time XXXX: ");
+		String day = privateView.getInput("Enter day of the week (mon,tue,wed,thu,fri): ");
+		int duration = Integer.parseInt(privateView.getInput("Enter Class Duration in minutes: "));
+		
+		db.editClass(classID, location, time, day, duration);
 	}
 	
 	public void viewSessionalTimetable() {
-		db.viewSessionalTimetable();
+		db.getSessionalTimetable(userID);
 	}
 	
 	public void viewOffers() {
-		db.viewOffers();
+		db.getOffers(userID);
 	}
 	
 	public void acceptOffer() {
-		db.acceptOffer();
+		int classID = Integer.parseInt(privateView.getInput("Enter Class ID: "));
+		
+		db.acceptOffer(classID, userID);
 	}
 	
 	public void rejectOffer() {
-		db.rejectOffer();
+		int classID = Integer.parseInt(privateView.getInput("Enter Class ID: "));
+		
+		db.rejectOffer(classID, userID);
 	}
 	
 	public String createStaff() {
-		String userID = defaultView.getInput("Enter new staff UserID: ");
-		String pwd = defaultView.getInput("Enter Password (>=8 characters): ");
+		String userID = privateView.getInput("Enter new staff UserID: ");
+		String pwd = privateView.getInput("Enter Password (>=8 characters): ");
 		int privilege = 0;
 		String courseName = "";
 		
 		try {
-			privilege = Integer.parseInt(defaultView.getInput("Enter Privilege Level (0-3): "));
+			privilege = Integer.parseInt(privateView.getInput("Enter Privilege Level (0-3): "));
 		} catch (NumberFormatException e) {
 			return new String("NumberFormatException: Enter an integer.");
 		}
 		
-		
-		
 		if (privilege == 2)
-			defaultView.getInput("Enter Course Name: ");
+			courseName = privateView.getInput("Enter Course Name: ");
 		
-		
-		return db.createStaff(userID, pwd, privilege, courseName);
+		return db.createStaff(userID, pwd, null, null, privilege, courseName);
 	}
 	
 	public void viewEligibleStaff() {
-		db.viewEligibleStaff();
+		String courseName = privateView.getInput("Enter Course Name: ");
+
+		viewEligibleStaff(courseName);
+	}
+	
+	public void viewEligibleStaff(String courseName) {
+		privateView.println(db.getEligibleStaff(courseName));
 	}
 	
 	public void submitAvailabilities() {
-		db.submitAvailabilities();
+		String availabilities = privateView.getInput("Enter Availabilities Name (<day>/<start-time 24hrs XXXX>-<end-time 24hrs XXXX>~<day>/<start-time 24hrs XXXX>-<end-time 24hrs XXXX>...): ");
+		
+		db.setAvailabilities(userID, availabilities);
 	}
 	
 	public void viewStaffMember() {
-		db.viewStaffMember();
+		// TODO - implement StaffController.viewStaffMember
+		throw new UnsupportedOperationException();
 	}
 	
 }

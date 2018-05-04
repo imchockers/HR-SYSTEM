@@ -46,7 +46,7 @@ public class CourseCoordinatorController extends StaffController {
 					break;
 				
 				case VIEW_ELIGIBLE_STAFF:
-					viewEligibleStaff();
+					viewEligibleStaff(courseName);
 					break;
 				
 				case VIEW_COURSE_TIMETABLE:

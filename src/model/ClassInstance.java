@@ -112,7 +112,7 @@ public class ClassInstance {
 	 * @return returns true if successful
 	 */
 	public boolean approve() {
-		if (!isAssigned())
+		if (!assigned)
 			return false;
 		
 		approved = true;
@@ -195,7 +195,8 @@ public class ClassInstance {
 	@Override
 	public String toString() {
 		
-		return new String(	name + ", " +
+		return new String(	classID + ", " +
+							name + ", " +
 							day + ", " + 
 							time + ", " + 
 							location + ", " + 
