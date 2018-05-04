@@ -2,18 +2,18 @@ package control;
 
 public class CourseCoordinatorController extends StaffController {
 	
-	private static final String VIEW_COURSE_TIMETABLE = "viewcoursetimetable";
+	private static final String VIEW_COURSE_TIMETABLE = "viewtimetable";
 	private static final String VIEW_ELIGIBLE_STAFF = "vieweligiblestaff";
-	private static final String ASSIGN_STAFF_TO_CLASS = "assignstafftoclass";
+	private static final String ASSIGN_STAFF_TO_CLASS = "assignstaff";
 	private static final String EDIT_CLASS = "editclass";
 	private static final String EXIT = "exit";
-	private static final String VIEW_COMMANDS = "viewcommands";
+	private static final String VIEW_COMMANDS = "commands";
 	
 	private String courseName;
 	
 	public CourseCoordinatorController(String ID, String courseName) {
 		super(ID);
-		this.setCourseName(courseName);
+		this.courseName = courseName;
 	}
 	
 	private void viewCommands() {
@@ -57,19 +57,7 @@ public class CourseCoordinatorController extends StaffController {
 					editClass();
 					break;
 
-			}
-			
+			}	
 		}
-		
 	}
-
-	public String getCourseName() {
-		return courseName;
-	}
-
-	public void setCourseName(String courseName) {
-		this.courseName = courseName;
-	}
-	
-
 }
