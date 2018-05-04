@@ -12,6 +12,7 @@ public class TimeAdminController extends StaffController {
 	private static final String APPROVE_STAFF_ASSIGNMENT = "approvestaff";
 	private static final String VIEW_PENDING_APPROVALS = "approvals";
 	private static final String EXIT = "exit";
+	private static final String LOGOUT = "logout";
 	private static final String VIEW_COMMANDS = "commands";
 	
 	public TimeAdminController(String userID) {
@@ -41,6 +42,10 @@ public class TimeAdminController extends StaffController {
 			
 			switch (getInput().toLowerCase()) {
 				case EXIT:
+					exit();
+					break;
+					
+				case LOGOUT:
 					running = false;
 					break;
 					

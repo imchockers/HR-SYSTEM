@@ -155,4 +155,9 @@ public abstract class StaffController {
 		throw new UnsupportedOperationException();
 	}
 	
+	public void exit() {
+		privateView.println(db.save());
+		System.exit(0);
+	}
+	
 }

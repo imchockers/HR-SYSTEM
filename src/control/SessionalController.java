@@ -8,6 +8,7 @@ public class SessionalController extends StaffController {
 	private static final String ACCEPT_OFFER = "acceptoffer";
 	private static final String REJECT_OFFER = "rejectoffer";
 	private static final String EXIT = "exit";
+	private static final String LOGOUT = "logout";
 	private static final String VIEW_COMMANDS = "commands";
 	
 	public SessionalController(String userID) {
@@ -35,6 +36,10 @@ public class SessionalController extends StaffController {
 			
 			switch (getInput().toLowerCase()) {
 				case EXIT:
+					exit();
+					break;
+					
+				case LOGOUT:
 					running = false;
 					break;
 				

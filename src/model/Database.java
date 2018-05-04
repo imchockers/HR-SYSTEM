@@ -19,9 +19,6 @@ public class Database {
 		System.out.println("Loading staff data...");
 		staffDb = DatabaseLoader.loadStaff();
 		System.out.println("Staff Loaded.");
-		
-		DatabaseLoader.saveTimetable(ttDb.export());
-		DatabaseLoader.saveStaffData(staffDb.export());
 	}
 
 	/**
@@ -178,6 +175,10 @@ public class Database {
 	public String getStaffMember(String userID) {
 		// TODO - implement Database.getStaffMember
 		throw new UnsupportedOperationException();
+	}
+
+	public String save() {
+		return DatabaseLoader.save(ttDb.export(), staffDb.export());
 	}
 	
 }

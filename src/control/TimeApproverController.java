@@ -4,6 +4,7 @@ public class TimeApproverController extends StaffController {
 
 	private static final String APPROVE_STAFF_ASSIGNMENT = "approvestaff";
 	private static final String VIEW_PENDING_APPROVALS = "viewapprovals";
+	private static final String LOGOUT = "logout";
 	private static final String EXIT = "exit";
 	private static final String VIEW_COMMANDS = "commands";
 	
@@ -27,8 +28,12 @@ public class TimeApproverController extends StaffController {
 		
 			
 			switch (getInput().toLowerCase()) {
-				case EXIT:
+				case LOGOUT:
 					running = false;
+					break;
+				
+				case EXIT:
+					exit();
 					break;
 					
 				case VIEW_COMMANDS:

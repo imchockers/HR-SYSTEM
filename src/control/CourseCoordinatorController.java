@@ -7,6 +7,7 @@ public class CourseCoordinatorController extends StaffController {
 	private static final String ASSIGN_STAFF_TO_CLASS = "assignstaff";
 	private static final String EDIT_CLASS = "editclass";
 	private static final String EXIT = "exit";
+	private static final String LOGOUT = "logout";
 	private static final String VIEW_COMMANDS = "commands";
 	
 	private String courseName;
@@ -34,6 +35,10 @@ public class CourseCoordinatorController extends StaffController {
 			
 			switch (getInput().toLowerCase()) {
 				case EXIT:
+					exit();
+					break;
+					
+				case LOGOUT:
 					running = false;
 					break;
 					

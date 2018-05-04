@@ -131,6 +131,23 @@ public class DatabaseLoader {
 	
 		return true;
 	}
+
+	public static String save(String ttData, String staffData) {
+		String retStr = new String();
+		
+		if (saveTimetable(ttData))
+			retStr += "Timetable data saved correctly! ";
+		else
+			retStr += "Timetable data may not have saved! ";
+		
+		if (saveStaffData(staffData))
+			retStr += "Staff data saved correctly!";
+		else
+			retStr += "Staff data may not have saved!";
+		
+		return retStr;
+
+	}
 	
 
 }
