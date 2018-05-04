@@ -20,27 +20,6 @@ public class Course {
 	}
 
 	/**
-	 * 
-	 * @return the course name
-	 */
-	public String getName() { return name; }
-
-	/**
-	 * Gets a string representation of all the classes in this course
-	 * 
-	 * @return a string representation of all the classes in this course
-	 */
-	public String getCourseTimetable() {
-		String retStr = new String();
-		
-		for (ClassInstance c: classes) {
-			retStr += c.toString();
-		}
-		
-		return retStr;
-	}
-	
-	/**
 	 * Assigned the specified staff member to the specified class
 	 * 
 	 * @param staffID userID of the staff member to assign
@@ -88,6 +67,12 @@ public class Course {
 	}
 
 	/**
+	 * 
+	 * @return the course name
+	 */
+	public String getName() { return name; }
+
+	/**
 	 * Approves the current staff assignment to the specified class
 	 * 
 	 * @param classID unique ID of the class
@@ -98,10 +83,25 @@ public class Course {
 		for (ClassInstance c: classes)
 			if (c.getClassID() == classID)
 				return c.approve();
-
+	
 		return false;
 	}
 
+	/**
+	 * Gets a string representation of all the classes in this course
+	 * 
+	 * @return a string representation of all the classes in this course
+	 */
+	public String getCourseTimetable() {
+		String retStr = new String();
+		
+		for (ClassInstance c: classes) {
+			retStr += c.toString();
+		}
+		
+		return retStr;
+	}
+	
 	/**
 	 * Edits the data elements of the class instance
 	 * 

@@ -20,21 +20,6 @@ public class Discipline {
 	}
 	
 	/**
-	 * Gets a string representation of all the classes in a specified course
-	 * 
-	 * @return a string representation of all the classes in a specified course
-	 */
-	public String getCourseTimetable(String courseName) {
-		String retStr = new String();
-		
-		for (Course c: courses)
-			if (c.getName().compareTo(courseName) == 0)
-				retStr += c.getCourseTimetable();
-		
-		return retStr;
-	}
-	
-	/**
 	 * Assigned the specified staff member to the specified class
 	 * 
 	 * @param staffID userID of the staff member to assign
@@ -103,6 +88,21 @@ public class Discipline {
 				return true;
 		
 		return false;
+	}
+
+	/**
+	 * Gets a string representation of all the classes in a specified course
+	 * 
+	 * @return a string representation of all the classes in a specified course
+	 */
+	public String getCourseTimetable(String courseName) {
+		String retStr = new String();
+		
+		for (Course c: courses)
+			if (c.getName().compareTo(courseName) == 0)
+				retStr += c.getCourseTimetable();
+		
+		return retStr;
 	}
 
 	/**

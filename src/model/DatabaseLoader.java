@@ -91,7 +91,24 @@ public class DatabaseLoader {
 		return sDb;
 	}
 	
-	public static boolean saveTimetable(String data) {
+	public static String save(String ttData, String staffData) {
+		String retStr = new String();
+		
+		if (saveTimetable(ttData))
+			retStr += "Timetable data saved correctly! ";
+		else
+			retStr += "Timetable data may not have saved! ";
+		
+		if (saveStaffData(staffData))
+			retStr += "Staff data saved correctly!";
+		else
+			retStr += "Staff data may not have saved!";
+		
+		return retStr;
+	
+	}
+
+	private static boolean saveTimetable(String data) {
 		try {
 			PrintWriter writer = new PrintWriter("timetable.data", "UTF-8");
 			
@@ -112,7 +129,7 @@ public class DatabaseLoader {
 		return true;
 	}
 	
-	public static boolean saveStaffData(String data) {
+	private static boolean saveStaffData(String data) {
 		try {
 			PrintWriter writer = new PrintWriter("login.data", "UTF-8");
 			
@@ -130,23 +147,6 @@ public class DatabaseLoader {
 		}
 	
 		return true;
-	}
-
-	public static String save(String ttData, String staffData) {
-		String retStr = new String();
-		
-		if (saveTimetable(ttData))
-			retStr += "Timetable data saved correctly! ";
-		else
-			retStr += "Timetable data may not have saved! ";
-		
-		if (saveStaffData(staffData))
-			retStr += "Staff data saved correctly!";
-		else
-			retStr += "Staff data may not have saved!";
-		
-		return retStr;
-
 	}
 	
 

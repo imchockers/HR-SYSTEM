@@ -62,6 +62,39 @@ public class StaffDatabase {
 	}
 
 	/**
+	 * Creates a new staff member
+	 * 
+	 * @param userID Unique userID associated with a staff member
+	 * @param password	Users password
+	 * @param qualifications	A list of a staff members course qualifications
+	 * @param availabilities	Users availabilities
+	 * @param privilege	Users privilege level
+	 * @param courseName	Name of a course associated with the user, non-null if user is a course coordinator
+	 * 
+	 * @return A message containing details of the success or failure of staff creation
+	 */
+	public String createStaff(String userID, String password, String qualifications, String availabilities, int privilege, String courseName) {
+		String failureReason = null;
+		
+		if (verifyStaff(userID)) {
+			failureReason = new String("Staff Member Exists!");
+		}
+		else if (password.length() < 8) {
+			failureReason = new String("Password Insecure!");
+		}
+		else if (privilege < 0 && privilege > 3) {
+			failureReason = new String("Invalid Privilege Level!");
+		}
+		
+		if (failureReason != null)
+			return new String("Create Staff failed: " + failureReason);
+		
+		staff.add(new StaffMember(userID, password, qualifications, availabilities, privilege, courseName));
+		
+		return new String("Create Staff Successful: " + userID + " " + privilege);
+	}
+
+	/**
 	 * Verifies that a user exists in the system
 	 * 
 	 * @param userID userID to compare
@@ -113,39 +146,6 @@ public class StaffDatabase {
 	public String getStaffMember(String userID) {
 		// TODO - implement StaffDatabase.getStaffMember
 		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * Creates a new staff member
-	 * 
-	 * @param userID Unique userID associated with a staff member
-	 * @param password	Users password
-	 * @param qualifications	A list of a staff members course qualifications
-	 * @param availabilities	Users availabilities
-	 * @param privilege	Users privilege level
-	 * @param courseName	Name of a course associated with the user, non-null if user is a course coordinator
-	 * 
-	 * @return A message containing details of the success or failure of staff creation
-	 */
-	public String createStaff(String userID, String password, String qualifications, String availabilities, int privilege, String courseName) {
-		String failureReason = null;
-		
-		if (verifyStaff(userID)) {
-			failureReason = new String("Staff Member Exists!");
-		}
-		else if (password.length() < 8) {
-			failureReason = new String("Password Insecure!");
-		}
-		else if (privilege < 0 && privilege > 3) {
-			failureReason = new String("Invalid Privilege Level!");
-		}
-		
-		if (failureReason != null)
-			return new String("Create Staff failed: " + failureReason);
-		
-		staff.add(new StaffMember(userID, password, qualifications, availabilities, privilege, courseName));
-		
-		return new String("Create Staff Successful: " + userID + " " + privilege);
 	}
 
 	public String export() {

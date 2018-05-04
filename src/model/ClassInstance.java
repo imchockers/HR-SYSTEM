@@ -14,10 +14,10 @@ public class ClassInstance {
 	private String time;
 	/**	Day of the week the class occurs	*/
 	private String day;
-	/**	Whether the class is assigned or not	*/
-	private boolean assigned;
 	/**	Staff member assigned to the class	*/
 	private String assignedStaff;
+	/**	Whether the class is assigned or not	*/
+	private boolean assigned;
 	/**	Whether the staff assignment for the class is approved	*/
 	private boolean approved;
 	/**	whether the assigned staff member has accepted the assignment offer	*/
@@ -48,12 +48,6 @@ public class ClassInstance {
 		this.assignedStaff = staffID;
 		this.duration = duration;
 	}
-	
-	/**
-	 * 
-	 * @return The ClassInstance name
-	 */
-	public String getName() { return name; }
 
 	/**
 	 * 

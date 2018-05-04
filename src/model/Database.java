@@ -37,22 +37,6 @@ public class Database {
 	}
 	
 	/**
-	 * Creates a new StaffMember object
-	 * 
-	  * @param userID Unique userID associated with a staff member
-	 * @param password	Users password
-	 * @param qualifications	A list of a staff members course qualifications
-	 * @param availabilities	Users availabilities
-	 * @param privilege	Users privilege level
-	 * @param courseName	Name of a course associated with the user, non-null if user is a course coordinator
-	 * 
-	 * @return a message containing information about the StaffMember created
-	 */
-	public String createStaff(String userID, String password, String qualifications, String availabilities, int privilege, String courseName) {
-		return staffDb.createStaff(userID, password, qualifications, availabilities, privilege, courseName);
-	}
-
-	/**
 	 * Verifies staff and class and then assigns the staff member to the class
 	 * 
 	 * @param staffID userID of staff member to be assigned
@@ -149,6 +133,22 @@ public class Database {
 	 */
 	public boolean rejectOffer(int classID, String staffID) {
 		return ttDb.rejectOffer(classID, staffID);
+	}
+
+	/**
+	 * Creates a new StaffMember object
+	 * 
+	  * @param userID Unique userID associated with a staff member
+	 * @param password	Users password
+	 * @param qualifications	A list of a staff members course qualifications
+	 * @param availabilities	Users availabilities
+	 * @param privilege	Users privilege level
+	 * @param courseName	Name of a course associated with the user, non-null if user is a course coordinator
+	 * 
+	 * @return a message containing information about the StaffMember created
+	 */
+	public String createStaff(String userID, String password, String qualifications, String availabilities, int privilege, String courseName) {
+		return staffDb.createStaff(userID, password, qualifications, availabilities, privilege, courseName);
 	}
 
 	/**
