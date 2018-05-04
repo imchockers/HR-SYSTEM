@@ -75,9 +75,7 @@ public class ClassInstance {
 	 * 
 	 * @return whether the class is approved or not
 	 */
-	public boolean isApproved() {
-		return this.approved;
-	}
+	public boolean isApproved() { return this.approved; }
 
 	/**
 	 * sets the location element of the classInstance
@@ -85,7 +83,8 @@ public class ClassInstance {
 	 * @param location value to set the location to
 	 */
 	public void setLocation(String location) {
-		this.location = location;
+		if (location != null)
+			this.location = location;
 	}
 
 	/**
@@ -94,7 +93,8 @@ public class ClassInstance {
 	 * @param time value to set the time to
 	 */
 	public void setTime(String time) {
-		this.time = time;
+		if (time != null)
+			this.time = time;
 	}
 
 	/**
@@ -103,7 +103,8 @@ public class ClassInstance {
 	 * @param day value to set the day to
 	 */
 	public void setDay(String day) {
-		this.day = day;
+		if (day != null)
+			this.day = day;
 	}
 
 	/**
@@ -123,17 +124,13 @@ public class ClassInstance {
 	 * 
 	 * @return whether the sessional staff member has accepted their offer
 	 */
-	public boolean isAccepted() {
-		return this.accepted;
-	}
+	public boolean isAccepted() { return this.accepted; }
 
 	/**
 	 * 
 	 * @return the userID of the staff member assigned to the class
 	 */
-	public String getStaff() {
-		return this.assignedStaff;
-	}
+	public String getStaff() { return this.assignedStaff; }
 
 	/**
 	 * accepts the staff assignment offer
@@ -171,9 +168,7 @@ public class ClassInstance {
 	 * 
 	 * @return the duration of the class in minutes
 	 */
-	public int getDuration() {
-		return this.duration;
-	}
+	public int getDuration() { return this.duration; }
 
 	/**
 	 * sets the value of the duration element of the class
@@ -181,7 +176,8 @@ public class ClassInstance {
 	 * @param duration duration of the class in minutes
 	 */
 	public void setDuration(int duration) {
-		this.duration = duration;
+		if (duration > 0)
+			this.duration = duration;
 	}
 	
 	/**

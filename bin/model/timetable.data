@@ -1,17 +1,17 @@
-IT,SEF,tute0,Mon,1130,80.04.11,unassigned,60
-IT,SEF,tute1,Mon,1130,80.04.11,unassigned,60
-IT,SEF,tute2,Mon,1230,80.04.11,unassigned,60
-IT,SEF,tute3,Tue,1330,80.04.11,unassigned,60
-IT,SEF,tute4,Wed,1430,80.04.11,unassigned,60
-IT,SEF,tute5,Fri,0830,80.04.11,unassigned,60
-IT,SEF,prac0,Tue,0930,80.04.11,unassigned,120
-IT,SEF,prac1,Tue,1230,80.04.11,unassigned,120
-IT,SEF,prac2,Thu,1030,80.04.11,unassigned,120
-IT,SEF,prac3,Wed,0930,80.04.11,unassigned,120
-IT,SEF,prac4,Mon,2030,80.04.11,unassigned,120
-IT,SEF,prac5,Fri,1830,80.04.11,unassigned,120
-Bio,Genetics,tute0,Fri,1630,80.04.11,unassigned,60
-Bio,Genetics,tute1,Thu,1230,80.04.11,unassigned,60
-Bio,Genetics,prac0,Mon,0830,80.04.11,unassigned,120
-Maths,Discrete Calc,lect0,Tue,1430,80.04.11,unassigned,120
-Maths,Discrete Calc,lect1,Wed,1530,80.04.11,unassigned,120
+IT,SEF,tute0,Mon,1130,80.04.11,e00001,60,true,true,true
+IT,SEF,tute1,Mon,1130,80.04.11,e00003,60,true,true,false
+IT,SEF,tute2,Mon,1230,80.04.11,e00001,60,true,false,false
+IT,SEF,tute3,Tue,1330,80.04.11,e00003,60,true,false,false
+IT,SEF,tute4,Wed,1430,80.04.11,unassigned,60,false,false,false
+IT,SEF,tute5,Fri,0830,80.04.11,unassigned,60,false,false,false
+IT,SEF,prac0,Tue,0930,80.04.11,unassigned,120,false,false,false
+IT,SEF,prac1,Tue,1230,80.04.11,unassigned,120,false,false,false
+IT,SEF,prac2,Thu,1030,80.04.11,unassigned,120,false,false,false
+IT,SEF,prac3,Wed,0930,80.04.11,unassigned,120,false,false,false
+IT,SEF,prac4,Mon,2030,80.04.11,unassigned,120,false,false,false
+IT,SEF,prac5,Fri,1830,80.04.11,unassigned,120,false,false,false
+Bio,Genetics,tute0,Fri,1630,80.04.11,unassigned,60,false,false,false
+Bio,Genetics,tute1,Thu,1230,80.04.11,unassigned,60,false,false,false
+Bio,Genetics,prac0,Mon,0830,80.04.11,unassigned,120,false,false,false
+Maths,Discrete Calc,lect0,Tue,1430,80.04.11,e00002,120,true,true,false
+Maths,Discrete Calc,lect1,Wed,1630,80.04.11,unassigned,120,false,false,false

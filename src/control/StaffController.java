@@ -47,7 +47,11 @@ public abstract class StaffController {
 		String course = privateView.getInput("Enter Course Name: ");
 		String className = privateView.getInput("Enter Class Name: ");
 		
-		db.inputTimetableData(discipline, course, className);
+		int classID = db.inputTimetableData(discipline, course, className);
+		
+		editClass();
+		
+		privateView.println("New Class Added! ID: " + classID);
 	}
 	
 	public void viewPendingApprovals() {
@@ -70,35 +74,49 @@ public abstract class StaffController {
 	
 	public void editClass() {
 		int classID = Integer.parseInt(privateView.getInput("Enter Class ID: "));
+		editClass(classID);
+	}
+	
+	private void editClass(int classID) {
 		String location = privateView.getInput("Enter Location (xx.xx.xx): ");
 		String time = privateView.getInput("Enter Time 24hr time XXXX: ");
 		String day = privateView.getInput("Enter day of the week (mon,tue,wed,thu,fri): ");
 		int duration = Integer.parseInt(privateView.getInput("Enter Class Duration in minutes: "));
 		
-		db.editClass(classID, location, time, day, duration);
+		if(db.editClass(classID, location, time, day, duration))
+			privateView.println("Class Details added Successfully!");
+		else
+			privateView.println("Class Details adding Failed!");
 	}
 	
 	public void viewSessionalTimetable() {
-		db.getSessionalTimetable(userID);
+		privateView.println(db.getSessionalTimetable(userID));
 	}
 	
 	public void viewOffers() {
-		db.getOffers(userID);
+		privateView.println(db.getOffers(userID));
 	}
 	
 	public void acceptOffer() {
 		int classID = Integer.parseInt(privateView.getInput("Enter Class ID: "));
 		
-		db.acceptOffer(classID, userID);
+		if(db.acceptOffer(classID, userID))
+			privateView.println("Offer Accepted Successfully!");
+		else
+			privateView.println("Offer Accept Failed!");
 	}
 	
 	public void rejectOffer() {
 		int classID = Integer.parseInt(privateView.getInput("Enter Class ID: "));
 		
-		db.rejectOffer(classID, userID);
+		if(db.rejectOffer(classID, userID))
+			privateView.println("Offer Rejected Successfully!");
+		else
+			privateView.println("Offer Reject Failed!");
+		
 	}
 	
-	public String createStaff() {
+	public void createStaff() {
 		String userID = privateView.getInput("Enter new staff UserID: ");
 		String pwd = privateView.getInput("Enter Password (>=8 characters): ");
 		int privilege = 0;
@@ -107,13 +125,13 @@ public abstract class StaffController {
 		try {
 			privilege = Integer.parseInt(privateView.getInput("Enter Privilege Level (0-3): "));
 		} catch (NumberFormatException e) {
-			return new String("NumberFormatException: Enter an integer.");
+			privateView.println("NumberFormatException: Enter an integer.");
 		}
 		
 		if (privilege == 2)
 			courseName = privateView.getInput("Enter Course Name: ");
 		
-		return db.createStaff(userID, pwd, null, null, privilege, courseName);
+		privateView.println(db.createStaff(userID, pwd, null, null, privilege, courseName));
 	}
 	
 	public void viewEligibleStaff() {
