@@ -4,7 +4,7 @@ import control.StaffController;
 
 public class Database implements AccessTimetableDatabase, AccessStaffDatabase {
 
-	private TimetableDatabase ttDb;
+	private MasterTimetable ttDb;
 	private StaffDatabase staffDb;
 	
 	public Database() {
@@ -35,7 +35,7 @@ public class Database implements AccessTimetableDatabase, AccessStaffDatabase {
 	public void approveStaffAssignment() {}
 	
 	public String viewCourseTimetable(String courseName) {
-		return ttDb.viewCourseTimetable(courseName);
+		return ttDb.getCourseTimetable(courseName);
 	}
 	
 	public void editClass() {}

@@ -8,8 +8,8 @@ public class DatabaseLoader {
 	private static final String LOGIN_DATA = "model/login.data";
 	private static final String TIMETABLE_DATA = "model/timetable.data";
 	
-	public static TimetableDatabase loadTimetable() {
-		TimetableDatabase ttDb = new TimetableDatabase();
+	public static MasterTimetable loadTimetable() {
+		MasterTimetable ttDb = new MasterTimetable ();
 		
 		Scanner sc;
 		sc = new Scanner(ClassLoader.getSystemResourceAsStream(TIMETABLE_DATA));
@@ -20,7 +20,9 @@ public class DatabaseLoader {
 			try {
 				String[] elements = fileInput.split(",");
 			
-				ttDb.addClass(elements[0], elements[1], elements[2], elements[3], elements[4], elements[5], elements[6]);
+				int classID = ttDb.inputTimetableData(elements[0], elements[1], elements[2]);
+				
+				ttDb.editClass(classID, elements[3], elements[4], elements[5], Integer.parseInt(elements[7]));
 			
 				System.out.println("Loaded class: " + elements[0] + " " + elements[1] + " " + elements[2]);
 			
