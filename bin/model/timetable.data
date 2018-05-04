@@ -1,3 +1,4 @@
+Discipline,Course,Class Name,Day,Time,Location,Staff ID,Duration,Assigned,Approved,Accepted
 IT,SEF,tute0,Mon,1130,80.04.11,e00001,60,true,true,true
 IT,SEF,tute1,Mon,1130,80.04.11,e00003,60,true,true,false
 IT,SEF,tute2,Mon,1230,80.04.11,e00001,60,true,false,false

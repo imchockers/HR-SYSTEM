@@ -1,17 +1,18 @@
-IT,SEF,tute0
-IT,SEF,tute1
-IT,SEF,tute2
-IT,SEF,tute3
-IT,SEF,tute4
-IT,SEF,tute5
-IT,SEF,prac0
-IT,SEF,prac1
-IT,SEF,prac2
-IT,SEF,prac3
-IT,SEF,prac4
-IT,SEF,prac5
-Bio,Genetics,tute0
-Bio,Genetics,tute1
-Bio,Genetics,prac0
-Maths,Discrete Calc,lect0
-Maths,Discrete Calc,lect1
+Discipline,Course,Class Name,Day,Time,Location,Staff ID,Duration,Assigned,Approved,Accepted
+name,name,tute0,80.04.11,1130,Mon,e00001,60,true,true,true
+name,tute1,80.04.11,1130,Mon,e00003,60,true,true,false
+name,tute2,80.04.11,1230,Mon,e00001,60,true,false,false
+name,tute3,80.04.11,1330,Tue,e00003,60,true,false,false
+name,tute4,80.04.11,1430,Wed,null,60,false,false,false
+name,tute5,80.04.11,0830,Fri,null,60,false,false,false
+name,prac0,80.04.11,0930,Tue,null,120,false,false,false
+name,prac1,80.04.11,1230,Tue,null,120,false,false,false
+name,prac2,80.04.11,1030,Thu,null,120,false,false,false
+name,prac3,80.04.11,0930,Wed,null,120,false,false,false
+name,prac4,80.04.11,2030,Mon,null,120,false,false,false
+name,prac5,80.04.11,1830,Fri,null,120,false,false,false
+name,name,tute0,80.04.11,1630,Fri,null,60,false,false,false
+name,tute1,80.04.11,1230,Thu,null,60,false,false,false
+name,prac0,80.04.11,0830,Mon,null,120,false,false,false
+name,name,lect0,80.04.11,1430,Tue,e00002,120,true,true,false
+name,lect1,80.04.11,1630,Wed,null,120,false,false,false

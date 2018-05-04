@@ -203,4 +203,14 @@ public class Discipline {
 		return false;
 	}
 
+	public String export() {
+		String retStr = new String();
+		
+		for (Course c: courses) {
+			retStr += "name," + c.export();
+		}
+		
+		return retStr;
+	}
+
 }

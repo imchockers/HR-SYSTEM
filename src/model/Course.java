@@ -209,4 +209,14 @@ public class Course {
 		return false;
 	}
 
+	public String export() {
+		String retStr = new String();
+		
+		for (ClassInstance c: classes) {
+			retStr += "name," + c.export() + "\n";
+		}
+		
+		return retStr;
+	}
+
 }

@@ -1,3 +1,4 @@
+userID,Password,Qualifications,Availabilities,Privilege,Course Name
 e00001,password,SEF/UCD,mon/0830-2030~tue/0930-1930,0,null
 e00002,password,Discrete Calc/Genetics,mon/0830-2030~tue/0930-1930,0,null
 e00003,password,SEF/Genetics,mon/0830-2030~tue/0930-1930,0,null

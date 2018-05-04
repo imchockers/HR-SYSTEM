@@ -192,4 +192,14 @@ public class MasterTimetable {
 		
 		return false;
 	}
+
+	public String export() {
+		String retStr = new String();
+		
+		for (Discipline d: disciplines) {
+			retStr += d.export();
+		}
+		
+		return retStr;
+	}
 }

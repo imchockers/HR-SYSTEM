@@ -205,4 +205,27 @@ public class ClassInstance {
 	 * @return whether the class is assigned or not
 	 */
 	public boolean isAssigned() { return assigned; }
+
+	public String export() {
+		String retStr = new String();
+		
+		retStr += name + "," + day + "," + time + "," + location + "," + assignedStaff + "," + duration;
+		
+		if (assigned)
+			retStr += ",true";
+		else 
+			retStr += ",false";
+		
+		if (approved)
+			retStr += ",true";
+		else 
+			retStr += ",false";
+		
+		if (accepted)
+			retStr += ",true";
+		else 
+			retStr += ",false";
+		
+		return retStr;
+	}
 }

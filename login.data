@@ -1,10 +1,11 @@
-e00001,password,0
-e00002,password,0
-e00003,password,0
-e00004,password,1
-e00005,password,1
-e00006,password,1
-e00007,password,2
-e00008,password,2
-e00009,password,3
-e00010,password,3
+User ID,Password,Qualifications,Availabilities,Privilege,Course Name
+e00001,password,SEF/UCD,mon/0830-2030~tue/0930-1930,0,null
+e00002,password,Discrete Calc/Genetics,mon/0830-2030~tue/0930-1930,0,null
+e00003,password,SEF/Genetics,mon/0830-2030~tue/0930-1930,0,null
+e00004,password,null,null,1,null
+e00005,password,null,null,1,null
+e00006,password,null,null,1,null
+e00007,password,null,null,2,SEF
+e00008,password,null,null,2,Discrete Calc
+e00009,password,null,null,3,null
+e00010,password,null,null,3,null

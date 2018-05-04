@@ -147,5 +147,15 @@ public class StaffDatabase {
 		
 		return new String("Create Staff Successful: " + userID + " " + privilege);
 	}
+
+	public String export() {
+		String retStr = new String();
+		
+		for (StaffMember s: staff) {
+			retStr += s.export() + "\n";
+		}
+		
+		return retStr;
+	}
 	
 }

@@ -1,5 +1,8 @@
 package model;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
@@ -13,6 +16,7 @@ public class DatabaseLoader {
 		
 		Scanner sc;
 		sc = new Scanner(ClassLoader.getSystemResourceAsStream(TIMETABLE_DATA));
+		sc.nextLine();
 		
 		String fileInput = sc.nextLine();
 		
@@ -51,6 +55,7 @@ public class DatabaseLoader {
 		
 		Scanner sc;
 		sc = new Scanner(ClassLoader.getSystemResourceAsStream(LOGIN_DATA));
+		sc.nextLine();
 		
 		String fileInput = sc.nextLine();
 		
@@ -72,5 +77,47 @@ public class DatabaseLoader {
 
 		return sDb;
 	}
+	
+	public static boolean saveTimetable(String data) {
+		try {
+			PrintWriter writer = new PrintWriter("timetable.data", "UTF-8");
+			
+			writer.println("Discipline,Course,Class Name,Day,Time,Location,Staff ID,Duration,Assigned,Approved,Accepted");
+			
+			writer.print(data);
+			
+			writer.close();
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			return false;
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+			return false;
+		}
+		
+		return true;
+	}
+	
+	public static boolean saveStaffData(String data) {
+		try {
+			PrintWriter writer = new PrintWriter("login.data", "UTF-8");
+			
+			writer.println("User ID,Password,Qualifications,Availabilities,Privilege,Course Name");
+			writer.print(data);
+			
+			writer.close();
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			return false;
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+			return false;
+		}
+	
+		return true;
+	}
+	
 
 }

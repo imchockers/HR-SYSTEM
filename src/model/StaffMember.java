@@ -117,4 +117,14 @@ public class StaffMember {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+
+	public String export() {
+		String retStr = new String();
+		
+		retStr += userID + "," + password + "," + qualifications + "," + availabilities + "," + privilege + "," + courseName;
+		
+		return retStr;
+		
+	}
 }

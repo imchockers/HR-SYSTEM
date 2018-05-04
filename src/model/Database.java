@@ -17,6 +17,9 @@ public class Database {
 		ttDb = DatabaseLoader.loadTimetable();
 		System.out.println("Loading staff data: ");
 		staffDb = DatabaseLoader.loadStaff();
+		
+		DatabaseLoader.saveTimetable(ttDb.export());
+		DatabaseLoader.saveStaffData(staffDb.export());
 	}
 
 	/**
