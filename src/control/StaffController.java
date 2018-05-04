@@ -16,14 +16,14 @@ public abstract class StaffController {
 		this.userID = userID;
 	}
 	
-	public abstract void getCommands();
-	
 	public static StaffController logIn() {
 		String userID = defaultView.getInput("Enter UserID: ");
 		String pwd = defaultView.getInput("Enter Password: ");
 		
 		return db.logIn(userID, pwd);
 	}
+	
+	public abstract void getCommands();
 	
 	public void viewCommands(String commands) {
 		privateView.println(commands);
@@ -67,9 +67,8 @@ public abstract class StaffController {
 			privateView.println("Approval Failed!");
 	}
 	
-	public String viewCourseTimetable(String courseName) {
+	public void viewCourseTimetable(String courseName) {
 		privateView.println(db.getCourseTimetable(courseName));
-		return null;
 	}
 	
 	public void editClass() {
