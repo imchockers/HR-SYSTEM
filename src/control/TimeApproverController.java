@@ -3,6 +3,7 @@ package control;
 public class TimeApproverController extends StaffController {
 
 	private static final String APPROVE_STAFF_ASSIGNMENT = "approvestaff";
+	private static final String DISAPPROVE_STAFF_ASSIGNMENT = "disapprovestaff";
 	private static final String VIEW_PENDING_APPROVALS = "viewapprovals";
 	private static final String LOGOUT = "logout";
 	private static final String EXIT = "exit";
@@ -42,6 +43,10 @@ public class TimeApproverController extends StaffController {
 				
 				case APPROVE_STAFF_ASSIGNMENT:
 					approveStaffAssignment();
+					break;
+					
+				case DISAPPROVE_STAFF_ASSIGNMENT:
+					disapproveStaffAssignment();
 					break;
 				
 				case VIEW_PENDING_APPROVALS:

@@ -80,6 +80,21 @@ public class MasterTimetable {
 		
 		return false;
 	}
+	
+	/**
+	 * Disapproves the current staff assignment to the specified class
+	 * 
+	 * @param classID unique ID of the class
+	 * 
+	 * @return true if successful
+	 */
+	public boolean disapproveStaffAssignment(int classID) {
+		for (Discipline d: disciplines)
+			if (d.disapproveStaffAssignment(classID))
+				return true;
+		
+		return false;
+	}
 
 	/**
 	 * Gets a string representation of all the classes in a specified course

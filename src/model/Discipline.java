@@ -89,6 +89,21 @@ public class Discipline {
 		
 		return false;
 	}
+	
+	/**
+	 * Disapproves the current staff assignment to the specified class
+	 * 
+	 * @param classID unique ID of the class
+	 * 
+	 * @return true if successful
+	 */
+	public boolean disapproveStaffAssignment(int classID) {
+		for (Course c: courses)
+			if (c.disapproveStaffAssignment(classID))
+				return true;
+		
+		return false;
+	}
 
 	/**
 	 * Gets a string representation of all the classes in a specified course

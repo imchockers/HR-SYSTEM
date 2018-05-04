@@ -33,9 +33,7 @@ public class ClassInstance {
 	ClassInstance(String name) {
 		this.classID = classCount;
 		this.name = name;
-		this.assigned = false;
-		this.approved = false;
-		this.accepted = false;
+		setUnassigned();
 		
 		classCount++;
 	}
@@ -59,8 +57,7 @@ public class ClassInstance {
 	 * @param staffID userID of the staff member to assign to this class
 	 */
 	public boolean assignStaff(String staffID) {
-		this.assignedStaff = staffID;
-		assigned = true;
+		setAssigned(staffID);
 		
 		return true;
 	}
@@ -110,7 +107,21 @@ public class ClassInstance {
 		if (!assigned)
 			return false;
 		
-		approved = true;
+		setApproved();
+		return true;
+	}
+	
+	/**
+	 * Disapproves the staff allocation
+	 * 
+	 * @return returns true if successful
+	 */
+	public boolean disapprove() {
+		if (!assigned)
+			return false;
+		
+		setUnassigned();
+
 		return true;
 	}
 
@@ -135,7 +146,7 @@ public class ClassInstance {
 	 */
 	public boolean accept(String staffID) {
 		if (approved && assignedStaff.compareTo(staffID) == 0) {
-			accepted = true;
+			setAccepted();
 			return true;
 		}
 		return false;
@@ -148,10 +159,7 @@ public class ClassInstance {
 	 */
 	public boolean reject(String staffID) {
 		if (assignedStaff.compareTo(staffID) == 0) {
-			assigned = false;
-			accepted = false;
-			approved = false;
-			assignedStaff = new String("unassigned");
+			setUnassigned();
 			return true;
 		}
 		
@@ -221,5 +229,31 @@ public class ClassInstance {
 			retStr += ",false";
 		
 		return retStr;
+	}
+	
+	private void setUnassigned() {
+		assignedStaff = new String("unassigned");
+		assigned = false;
+		approved = false;
+		accepted = false;
+	}
+	
+	private void setAssigned(String assignedStaff) {
+		this.assignedStaff = assignedStaff;
+		assigned = true;
+		approved = false;
+		accepted = false;
+	}
+	
+	private void setApproved() {
+		assigned = true;
+		approved = true;
+		accepted = false;
+	}
+	
+	private void setAccepted() {
+		assigned = true;
+		approved = true;
+		accepted = true;
 	}
 }

@@ -88,6 +88,21 @@ public class Course {
 	}
 
 	/**
+	 * Disapproves the current staff assignment to the specified class
+	 * 
+	 * @param classID unique ID of the class
+	 * 
+	 * @return true if successful
+	 */
+	public boolean disapproveStaffAssignment(int classID) {
+		for (ClassInstance c: classes)
+			if (c.getClassID() == classID)
+				return c.disapprove();
+	
+		return false;
+	}
+	
+	/**
 	 * Gets a string representation of all the classes in this course
 	 * 
 	 * @return a string representation of all the classes in this course

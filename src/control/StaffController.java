@@ -67,6 +67,15 @@ public abstract class StaffController {
 			privateView.println("Approval Failed!");
 	}
 	
+	public void disapproveStaffAssignment() {
+		int classID = Integer.parseInt(privateView.getInput("Enter Class ID: "));
+
+		if(db.disapproveStaffAssignment(classID))
+			privateView.println("Disapproval Successful!");
+		else
+			privateView.println("Disapproval Failed!");
+	}
+	
 	public void viewCourseTimetable(String courseName) {
 		privateView.println(db.getCourseTimetable(courseName));
 	}

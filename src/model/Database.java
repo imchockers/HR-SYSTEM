@@ -79,6 +79,10 @@ public class Database {
 	public boolean approveStaffAssignment(int classID) {
 		return ttDb.approveStaffAssignment(classID);
 	}
+	
+	public boolean disapproveStaffAssignment(int classID) {
+		return ttDb.disapproveStaffAssignment(classID);
+	}
 
 	/**
 	 * 
