@@ -13,10 +13,12 @@ public class Database {
 	 * Default constructor
 	 */
 	public Database() {
-		System.out.println("Loading timetable data: ");
+		System.out.println("Loading timetable data...");
 		ttDb = DatabaseLoader.loadTimetable();
-		System.out.println("Loading staff data: ");
+		System.out.println("Timetable Loaded.");
+		System.out.println("Loading staff data...");
 		staffDb = DatabaseLoader.loadStaff();
+		System.out.println("Staff Loaded.");
 		
 		DatabaseLoader.saveTimetable(ttDb.export());
 		DatabaseLoader.saveStaffData(staffDb.export());

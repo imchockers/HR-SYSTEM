@@ -42,8 +42,6 @@ public class DatabaseLoader {
 							ttDb.acceptOffer(classID, elements[6]);
 					}
 					
-					System.out.println("Loaded class: " + elements[0] + " " + elements[1] + " " + elements[2]);
-				
 					fileInput = sc.nextLine();
 				} catch (NoSuchElementException e) {
 					break;
@@ -75,11 +73,7 @@ public class DatabaseLoader {
 			while (fileInput != null) {
 				try {
 					String[] elements = fileInput.split(",");
-				
 					sDb.createStaff(elements[0], elements[1], elements[2], elements[3], Integer.parseInt(elements[4]), elements[5]);
-					
-					System.out.println("Loaded Staff Member: " + elements[0]);
-				
 					fileInput = sc.nextLine();
 				} catch (NoSuchElementException e) {
 					break;
