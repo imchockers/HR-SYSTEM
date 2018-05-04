@@ -24,6 +24,15 @@ public class DatabaseLoader {
 				
 				ttDb.editClass(classID, elements[3], elements[4], elements[5], Integer.parseInt(elements[7]));
 			
+				if (!(elements[6].compareTo("unassigned") == 0)) {
+					if (elements[8].compareTo("true") == 0)
+						ttDb.assignStaffToClass(elements[6], classID);
+					if (elements[9].compareTo("true") == 0)
+						ttDb.approveStaffAssignment(classID);
+					if (elements[10].compareTo("true") == 0)
+						ttDb.acceptOffer(classID, elements[6]);
+				}
+				
 				System.out.println("Loaded class: " + elements[0] + " " + elements[1] + " " + elements[2]);
 			
 				fileInput = sc.nextLine();
