@@ -1,5 +1,6 @@
 package model;
 
+import java.time.*;
 import java.util.ArrayList;
 
 public class MasterTimetable {
@@ -121,9 +122,33 @@ public class MasterTimetable {
 	 * @param duration duration of the class in minutes
 	 * 
 	 * @return true if successful
-	 */
+	 
 	public boolean editClass(int classID, String location, String time, String day, int duration) {
 		ClassInstance c = getClass(classID);
+
+		if (c != null) {
+			c.setLocation(location);
+			c.setTime(time);
+			c.setDay(day);
+			c.setDuration(duration);
+			return true;
+		}
+		return false;
+	}*/
+	
+	/**
+	 * Edits the data elements of the class instance
+	 * 
+	 * @param classID unique ID of the class to be edited
+	 * @param location location string of the class
+	 * @param time time of the day in 24hr time
+	 * @param day day of the week
+	 * @param duration duration of the class in minutes
+	 * 
+	 * @return true if successful
+	 */
+	public boolean editClass(int classID, String location, LocalTime time, DayOfWeek day, Duration duration) {
+		ClassDetails c = getClass(classID).getDetails();
 
 		if (c != null) {
 			c.setLocation(location);

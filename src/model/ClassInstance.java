@@ -1,5 +1,7 @@
 package model;
 
+import java.time.*;
+
 public class ClassInstance {
 
 	/**	Counter of current number of classInstances, used to set classID	*/
@@ -24,6 +26,8 @@ public class ClassInstance {
 	private boolean accepted;
 	/**	duration of the class in minutes	*/
 	private int duration;
+	/**	Contains time, day, and location details	*/
+	private ClassDetails details;
 	
 	/**
 	 * Default constructor
@@ -35,16 +39,9 @@ public class ClassInstance {
 		this.name = name;
 		setUnassigned();
 		
+		details = new ClassDetails(name);
+		
 		classCount++;
-	}
-	
-	ClassInstance(String name, String time, String day, String location, String staffID, int duration) {
-		this(name);
-		this.time = time;
-		this.day = day;
-		this.location = location;
-		this.assignedStaff = staffID;
-		this.duration = duration;
 	}
 
 	/**
@@ -52,6 +49,12 @@ public class ClassInstance {
 	 * @return The unique ID of the classInstance
 	 */
 	public int getClassID() { return classID; }
+	
+	/**
+	 * 
+	 * @return The time and date details of the classInstance
+	 */
+	public ClassDetails getDetails() { return details; }
 	
 	/**
 	 * @param staffID userID of the staff member to assign to this class
@@ -194,10 +197,7 @@ public class ClassInstance {
 	public String toString() {
 		
 		return new String(	classID + ", " +
-							name + ", " +
-							day + ", " + 
-							time + ", " + 
-							location + ", " + 
+							details.export(", ") + ", " + 
 							assignedStaff + "\n"	);
 	}
 
@@ -211,7 +211,7 @@ public class ClassInstance {
 	public String export() {
 		String retStr = new String();
 		
-		retStr += name + "," + day + "," + time + "," + location + "," + assignedStaff + "," + duration;
+		retStr += details.export(",") + "," + assignedStaff;
 		
 		if (assigned)
 			retStr += ",true";

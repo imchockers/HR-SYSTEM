@@ -4,6 +4,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.time.DayOfWeek;
+import java.time.Duration;
+import java.time.LocalTime;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
@@ -31,15 +34,15 @@ public class DatabaseLoader {
 				
 					int classID = ttDb.inputTimetableData(elements[0], elements[1], elements[2]);
 					
-					ttDb.editClass(classID, elements[3], elements[4], elements[5], Integer.parseInt(elements[7]));
+					ttDb.editClass(classID, elements[5], LocalTime.parse(elements[4]), DayOfWeek.valueOf(elements[3]), Duration.parse("PT" + elements[6] + "M"));
 				
-					if (!(elements[6].compareTo("unassigned") == 0)) {
+					if (elements[7].compareTo("unassigned") != 0) {
 						if (elements[8].compareTo("true") == 0)
-							ttDb.assignStaffToClass(elements[6], classID);
+							ttDb.assignStaffToClass(elements[7], classID);
 						if (elements[9].compareTo("true") == 0)
 							ttDb.approveStaffAssignment(classID);
 						if (elements[10].compareTo("true") == 0)
-							ttDb.acceptOffer(classID, elements[6]);
+							ttDb.acceptOffer(classID, elements[7]);
 					}
 					
 					fileInput = sc.nextLine();
@@ -112,7 +115,7 @@ public class DatabaseLoader {
 		try {
 			PrintWriter writer = new PrintWriter("timetable.data", "UTF-8");
 			
-			writer.println("Discipline,Course,Class Name,Day,Time,Location,Staff ID,Duration,Assigned,Approved,Accepted");
+			writer.println("Discipline,Course,Class Name,Day,Time,Location,Duration,Staff ID,Assigned,Approved,Accepted");
 			
 			writer.print(data);
 			
