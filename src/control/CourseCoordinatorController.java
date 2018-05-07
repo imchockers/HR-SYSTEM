@@ -1,6 +1,6 @@
 package control;
 
-public class CourseCoordinatorController extends StaffController {
+public class CourseCoordinatorController extends StaffController implements Coordination {
 	
 	private String courseName;
 	
@@ -37,19 +37,19 @@ public class CourseCoordinatorController extends StaffController {
 					break;
 				
 				case ASSIGN_STAFF_TO_CLASS:
-					assignStaffToClass();
+					assignStaffToClass(getView(), getDatabase());
 					break;
 				
 				case VIEW_ELIGIBLE_STAFF:
-					viewEligibleStaff(courseName);
+					viewEligibleStaff(getView(), getDatabase(), courseName);
 					break;
 				
 				case VIEW_TIMETABLE:
-					viewCourseTimetable(courseName);
+					viewCourseTimetable(getView(), getDatabase(), courseName);
 					break;
 				
 				case EDIT_CLASS:
-					editClass();
+					editClass(getView(), getDatabase());
 					break;
 
 			}	
@@ -60,7 +60,8 @@ public class CourseCoordinatorController extends StaffController {
 	public void welcome() {
 		super.welcome();
 		viewCommands();
-		viewCourseTimetable(courseName);
-		viewEligibleStaff(courseName);
+		viewCourseTimetable(getView(), getDatabase(), courseName);
+		viewEligibleStaff(getView(), getDatabase(), courseName);
 	}
+
 }

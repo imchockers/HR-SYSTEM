@@ -1,6 +1,6 @@
 package control;
 
-public class TimeApproverController extends StaffController {
+public class TimeApproverController extends StaffController implements Approval {
 	
 	public TimeApproverController(String userID) {
 		super(userID);
@@ -33,15 +33,15 @@ public class TimeApproverController extends StaffController {
 					break;
 				
 				case APPROVE_STAFF_ASSIGNMENT:
-					approveStaffAssignment();
+					approveStaffAssignment(getView(), getDatabase());
 					break;
 					
 				case DISAPPROVE_STAFF_ASSIGNMENT:
-					disapproveStaffAssignment();
+					disapproveStaffAssignment(getView(), getDatabase());
 					break;
 				
 				case VIEW_PENDING_APPROVALS:
-					viewPendingApprovals();
+					viewPendingApprovals(getView(), getDatabase());
 					break;
 
 			}
@@ -54,7 +54,7 @@ public class TimeApproverController extends StaffController {
 	public void welcome() {
 		super.welcome();
 		viewCommands();
-		viewPendingApprovals();
+		viewPendingApprovals(getView(), getDatabase());
 	}
 	
 }

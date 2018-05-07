@@ -1,6 +1,6 @@
 package control;
 
-public class TimeAdminController extends StaffController {
+public class TimeAdminController extends StaffController implements Approval, Coordination {
 	
 	public TimeAdminController(String userID) {
 		super(userID);
@@ -51,7 +51,7 @@ public class TimeAdminController extends StaffController {
 					break;
 				
 				case ASSIGN_STAFF_TO_CLASS:
-					assignStaffToClass();
+					assignStaffToClass(getView(), getDatabase());
 					break;
 				
 				case VIEW_ELIGIBLE_STAFF:
@@ -63,15 +63,15 @@ public class TimeAdminController extends StaffController {
 					break;
 				
 				case EDIT_CLASS:
-					editClass();
+					editClass(getView(), getDatabase());
 					break;
 
 				case APPROVE_STAFF_ASSIGNMENT:
-					approveStaffAssignment();
+					approveStaffAssignment(getView(), getDatabase());
 					break;
 				
 				case VIEW_PENDING_APPROVALS:
-					viewPendingApprovals();
+					viewPendingApprovals(getView(), getDatabase());
 					break;
 
 			}
@@ -84,7 +84,44 @@ public class TimeAdminController extends StaffController {
 	public void welcome() {
 		super.welcome();
 		viewCommands();
-		viewPendingApprovals();
+		viewPendingApprovals(getView(), getDatabase());
+	}
+	
+	public void inputTimetableData() {
+		String discipline = getView().getInput("Enter Discipline Name: ");
+		String course = getView().getInput("Enter Course Name: ");
+		String className = getView().getInput("Enter Class Name: ");
+		
+		int classID = getDatabase().inputTimetableData(discipline, course, className);
+		
+		editClass(getView(), getDatabase(), classID);
+		
+		getView().println("New Class Added! ID: " + classID + "\n");
+	}
+	
+	public void createStaff() {
+		String userID = getView().getInput("Enter new staff UserID: ");
+		String pwd = getView().getInput("Enter Password (>=8 characters): ");
+		int privilege = 0;
+		String courseName = "";
+		
+		try {
+			privilege = Integer.parseInt(getView().getInput("Enter Privilege Level (0-3): "));
+		} catch (NumberFormatException e) {
+			getView().println("NumberFormatException: Enter an integer." + "\n");
+			return;
+		}
+		
+		if (privilege == 2)
+			courseName = getView().getInput("Enter Course Name: ");
+		
+		getView().println(getDatabase().createStaff(userID, pwd, null, null, privilege, courseName) + "\n");
+	}
+	
+	public void viewEligibleStaff() {
+		String courseName = getView().getInput("Enter Course Name: ");
+
+		viewEligibleStaff(getView(), getDatabase(),  courseName);
 	}
 
 }

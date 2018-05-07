@@ -1,6 +1,6 @@
 package control;
 
-public class SessionalController extends StaffController {
+public class SessionalController extends StaffController implements Commands {
 
 	public SessionalController(String userID) {
 		super(userID);
@@ -22,7 +22,6 @@ public class SessionalController extends StaffController {
 		
 		while (running) {
 		
-			
 			switch (getInput().toLowerCase()) {
 				case EXIT:
 					exit();
@@ -68,6 +67,41 @@ public class SessionalController extends StaffController {
 		viewCommands();
 		viewSessionalTimetable();
 		viewOffers();
+	}
+	
+	public void viewSessionalTimetable() {
+		getView().println("Current Personal Timetable:");
+		getView().println(getDatabase().getSessionalTimetable(getID()) + "\n");
+	}
+	
+	public void viewOffers() {
+		getView().println("Pending Class Offers:");
+		getView().println(getDatabase().getOffers(getID()) + "\n");
+	}
+	
+	public void acceptOffer() {
+		int classID = Integer.parseInt(getView().getInput("Enter Class ID: "));
+		
+		if(getDatabase().acceptOffer(classID, getID()))
+			getView().println("Offer Accepted Successfully!" + "\n");
+		else
+			getView().println("Offer Accept Failed!" + "\n");
+	}
+	
+	public void rejectOffer() {
+		int classID = Integer.parseInt(getView().getInput("Enter Class ID: "));
+		
+		if(getDatabase().rejectOffer(classID, getID()))
+			getView().println("Offer Rejected Successfully!" + "\n");
+		else
+			getView().println("Offer Reject Failed!" + "\n");
+		
+	}
+	
+	public void submitAvailabilities() {
+		String availabilities = getView().getInput("Enter Availabilities Name (<day>/<start-time 24hrs XXXX>-<end-time 24hrs XXXX>~<day>/<start-time 24hrs XXXX>-<end-time 24hrs XXXX>...): ");
+		
+		getDatabase().setAvailabilities(getID(), availabilities);
 	}
 
 }

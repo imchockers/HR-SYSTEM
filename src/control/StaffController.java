@@ -25,6 +25,12 @@ public abstract class StaffController implements Commands {
 	
 	public abstract void getCommands();
 	
+	public String getID() { return userID; }
+	
+	public ConsoleView getView() { return privateView; }
+	
+	public Database getDatabase() { return db; }
+	
 	public void viewCommands(String commands) {
 		privateView.println("Command List:");
 		privateView.println(commands);
@@ -32,145 +38,9 @@ public abstract class StaffController implements Commands {
 							LOGOUT_DESC + BUFFER + LOGOUT + "\n" +
 							EXIT_DESC + BUFFER + EXIT + "\n");
 	}
-	
-	public String getID() { return userID; }
 
 	public String getInput() {
 		return privateView.getInput("Enter Command: ");
-	}
-	
-	public void assignStaffToClass() {
-		String staffID = privateView.getInput("Enter user ID: ");
-		int classID = Integer.parseInt(privateView.getInput("Enter Class ID: "));
-		
-		privateView.println(db.assignStaffToClass(staffID, classID) + "\n");
-	}
-	
-	public void inputTimetableData() {
-		String discipline = privateView.getInput("Enter Discipline Name: ");
-		String course = privateView.getInput("Enter Course Name: ");
-		String className = privateView.getInput("Enter Class Name: ");
-		
-		int classID = db.inputTimetableData(discipline, course, className);
-		
-		editClass(classID);
-		
-		privateView.println("New Class Added! ID: " + classID + "\n");
-	}
-	
-	public void viewPendingApprovals() {
-		privateView.println("Current Saff Assignments Awaiting Approval:");
-		privateView.println(db.getPendingApprovals() + "\n");
-	}
-	
-	public void approveStaffAssignment() {
-		int classID = Integer.parseInt(privateView.getInput("Enter Class ID: "));
-
-		if(db.approveStaffAssignment(classID))
-			privateView.println("Approval Successful!" + "\n");
-		else
-			privateView.println("Approval Failed!" + "\n");
-	}
-	
-	public void disapproveStaffAssignment() {
-		int classID = Integer.parseInt(privateView.getInput("Enter Class ID: "));
-
-		if(db.disapproveStaffAssignment(classID))
-			privateView.println("Disapproval Successful!" + "\n");
-		else
-			privateView.println("Disapproval Failed!" + "\n");
-	}
-	
-	public void viewCourseTimetable(String courseName) {
-		privateView.println("Current Course Timetable:");
-		privateView.println(db.getCourseTimetable(courseName) + "\n");
-	}
-	
-	public void editClass() {
-		int classID = Integer.parseInt(privateView.getInput("Enter Class ID: "));
-		editClass(classID);
-	}
-	
-	private void editClass(int classID) {
-		String location = privateView.getInput("Enter Location (xx.xx.xx): ");
-		String time = privateView.getInput("Enter Time 24hr time XXXX: ");
-		String day = privateView.getInput("Enter day of the week (mon,tue,wed,thu,fri): ");
-		int duration = Integer.parseInt(privateView.getInput("Enter Class Duration in minutes: "));
-		
-		if(db.editClass(classID, location, time, day, duration))
-			privateView.println("Class Details added Successfully!" + "\n");
-		else
-			privateView.println("Class Details adding Failed!" + "\n");
-	}
-	
-	public void viewSessionalTimetable() {
-		privateView.println("Current Personal Timetable:");
-		privateView.println(db.getSessionalTimetable(userID) + "\n");
-	}
-	
-	public void viewOffers() {
-		privateView.println("Pending Class Offers:");
-		privateView.println(db.getOffers(userID) + "\n");
-	}
-	
-	public void acceptOffer() {
-		int classID = Integer.parseInt(privateView.getInput("Enter Class ID: "));
-		
-		if(db.acceptOffer(classID, userID))
-			privateView.println("Offer Accepted Successfully!" + "\n");
-		else
-			privateView.println("Offer Accept Failed!" + "\n");
-	}
-	
-	public void rejectOffer() {
-		int classID = Integer.parseInt(privateView.getInput("Enter Class ID: "));
-		
-		if(db.rejectOffer(classID, userID))
-			privateView.println("Offer Rejected Successfully!" + "\n");
-		else
-			privateView.println("Offer Reject Failed!" + "\n");
-		
-	}
-	
-	public void createStaff() {
-		String userID = privateView.getInput("Enter new staff UserID: ");
-		String pwd = privateView.getInput("Enter Password (>=8 characters): ");
-		int privilege = 0;
-		String courseName = "";
-		
-		try {
-			privilege = Integer.parseInt(privateView.getInput("Enter Privilege Level (0-3): "));
-		} catch (NumberFormatException e) {
-			privateView.println("NumberFormatException: Enter an integer." + "\n");
-			return;
-		}
-		
-		if (privilege == 2)
-			courseName = privateView.getInput("Enter Course Name: ");
-		
-		privateView.println(db.createStaff(userID, pwd, null, null, privilege, courseName) + "\n");
-	}
-	
-	public void viewEligibleStaff() {
-		String courseName = privateView.getInput("Enter Course Name: ");
-
-		viewEligibleStaff(courseName);
-	}
-	
-	public void viewEligibleStaff(String courseName) {
-		privateView.println("Staff Eligible to be Assigned to " + courseName + ":");
-		privateView.println(db.getEligibleStaff(courseName) + "\n");
-	}
-	
-	public void submitAvailabilities() {
-		String availabilities = privateView.getInput("Enter Availabilities Name (<day>/<start-time 24hrs XXXX>-<end-time 24hrs XXXX>~<day>/<start-time 24hrs XXXX>-<end-time 24hrs XXXX>...): ");
-		
-		db.setAvailabilities(userID, availabilities);
-	}
-	
-	public void viewStaffMember() {
-		// TODO - implement StaffController.viewStaffMember
-		throw new UnsupportedOperationException();
 	}
 	
 	public void exit() {
