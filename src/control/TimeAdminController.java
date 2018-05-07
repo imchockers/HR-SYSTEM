@@ -1,36 +1,21 @@
 package control;
 
 public class TimeAdminController extends StaffController {
-
-	private static final String INPUT_TIMETABLE_DATA = "inputtimetabledata";
-	private static final String CREATE_STAFF = "createstaff";
-	private static final String CALL_REPORTS = "callreports";
-	private static final String VIEW_COURSE_TIMETABLE = "timetable";
-	private static final String VIEW_ELIGIBLE_STAFF = "eligiblestaff";
-	private static final String ASSIGN_STAFF_TO_CLASS = "assignstaff";
-	private static final String EDIT_CLASS = "editclass";
-	private static final String APPROVE_STAFF_ASSIGNMENT = "approvestaff";
-	private static final String VIEW_PENDING_APPROVALS = "approvals";
-	private static final String EXIT = "exit";
-	private static final String LOGOUT = "logout";
-	private static final String VIEW_COMMANDS = "commands";
 	
 	public TimeAdminController(String userID) {
 		super(userID);
 	}
 	
 	private void viewCommands() {
-		super.viewCommands(	INPUT_TIMETABLE_DATA + "\n" +
-							CREATE_STAFF + "\n" +
-							CALL_REPORTS + "\n" +
-							VIEW_COURSE_TIMETABLE + "\n" +
-							VIEW_ELIGIBLE_STAFF + "\n" +
-							ASSIGN_STAFF_TO_CLASS + "\n" +
-							EDIT_CLASS + "\n" +
-							APPROVE_STAFF_ASSIGNMENT + "\n" +
-							VIEW_PENDING_APPROVALS + "\n" +
-							VIEW_COMMANDS + "\n" +
-							EXIT);
+		super.viewCommands(	INPUT_TIMETABLE_DATA_DESC + BUFFER + INPUT_TIMETABLE_DATA + "\n" +
+							CREATE_STAFF_DESC + BUFFER + CREATE_STAFF + "\n" +
+							CALL_REPORTS_DESC + BUFFER + CALL_REPORTS + "\n" +
+							VIEW_COURSE_TIMETABLE_DESC + BUFFER + VIEW_TIMETABLE + "\n" +
+							VIEW_ELIGIBLE_STAFF_DESC + BUFFER + VIEW_ELIGIBLE_STAFF + "\n" +
+							ASSIGN_STAFF_TO_CLASS_DESC + BUFFER + ASSIGN_STAFF_TO_CLASS + "\n" +
+							EDIT_CLASS_DESC + BUFFER + EDIT_CLASS + "\n" +
+							APPROVE_STAFF_ASSIGNMENT_DESC + BUFFER + APPROVE_STAFF_ASSIGNMENT + "\n" +
+							VIEW_PENDING_APPROVALS_DESC + BUFFER + VIEW_PENDING_APPROVALS);
 	}
 
 	@Override
@@ -73,7 +58,7 @@ public class TimeAdminController extends StaffController {
 					viewEligibleStaff();
 					break;
 				
-				case VIEW_COURSE_TIMETABLE:
+				case VIEW_TIMETABLE:
 					//viewCourseTimetable();
 					break;
 				

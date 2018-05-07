@@ -1,13 +1,6 @@
 package control;
 
 public class TimeApproverController extends StaffController {
-
-	private static final String APPROVE_STAFF_ASSIGNMENT = "approvestaff";
-	private static final String DISAPPROVE_STAFF_ASSIGNMENT = "disapprovestaff";
-	private static final String VIEW_PENDING_APPROVALS = "viewapprovals";
-	private static final String LOGOUT = "logout";
-	private static final String EXIT = "exit";
-	private static final String VIEW_COMMANDS = "commands";
 	
 	public TimeApproverController(String userID) {
 		super(userID);
@@ -15,10 +8,8 @@ public class TimeApproverController extends StaffController {
 	}
 	
 	private void viewCommands() {
-		super.viewCommands(	APPROVE_STAFF_ASSIGNMENT + "\n" +
-							VIEW_PENDING_APPROVALS + "\n" +
-							VIEW_COMMANDS + "\n" +
-							EXIT);
+		super.viewCommands(	APPROVE_STAFF_ASSIGNMENT_DESC + BUFFER + APPROVE_STAFF_ASSIGNMENT + "\n" +
+							VIEW_PENDING_APPROVALS_DESC + BUFFER + VIEW_PENDING_APPROVALS);
 	}
 
 	@Override

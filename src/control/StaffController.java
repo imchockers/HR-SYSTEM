@@ -3,8 +3,8 @@ package control;
 import model.Database;
 import view.ConsoleView;
 
-public abstract class StaffController {
-
+public abstract class StaffController implements Commands {
+	
 	private static Database db = new Database();
 	private static ConsoleView defaultView = new ConsoleView(System.in, System.out);
 	private ConsoleView privateView;
@@ -23,12 +23,14 @@ public abstract class StaffController {
 		return db.logIn(userID, pwd);
 	}
 	
-	public void getCommands() {
-		
-	}
+	public abstract void getCommands();
 	
 	public void viewCommands(String commands) {
+		privateView.println("Command List:");
 		privateView.println(commands);
+		privateView.println(VIEW_COMMANDS_DESC + BUFFER + VIEW_COMMANDS + "\n" +
+							LOGOUT_DESC + BUFFER + LOGOUT + "\n" +
+							EXIT_DESC + BUFFER + EXIT);
 	}
 	
 	public String getID() { return userID; }

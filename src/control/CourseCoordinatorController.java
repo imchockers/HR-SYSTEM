@@ -2,14 +2,6 @@ package control;
 
 public class CourseCoordinatorController extends StaffController {
 	
-	private static final String VIEW_COURSE_TIMETABLE = "timetable";
-	private static final String VIEW_ELIGIBLE_STAFF = "eligiblestaff";
-	private static final String ASSIGN_STAFF_TO_CLASS = "assignstaff";
-	private static final String EDIT_CLASS = "editclass";
-	private static final String EXIT = "exit";
-	private static final String LOGOUT = "logout";
-	private static final String VIEW_COMMANDS = "commands";
-	
 	private String courseName;
 	
 	public CourseCoordinatorController(String ID, String courseName) {
@@ -18,12 +10,10 @@ public class CourseCoordinatorController extends StaffController {
 	}
 	
 	private void viewCommands() {
-		super.viewCommands(	VIEW_COURSE_TIMETABLE + "\n" +
-							VIEW_ELIGIBLE_STAFF + "\n" +
-							ASSIGN_STAFF_TO_CLASS + "\n" +
-							EDIT_CLASS + "\n" +
-							VIEW_COMMANDS + "\n" +
-							EXIT);
+		super.viewCommands( VIEW_COURSE_TIMETABLE_DESC + BUFFER + VIEW_TIMETABLE + "\n" +
+							VIEW_ELIGIBLE_STAFF_DESC + BUFFER + VIEW_ELIGIBLE_STAFF + "\n" +
+							ASSIGN_STAFF_TO_CLASS_DESC + BUFFER + ASSIGN_STAFF_TO_CLASS + "\n" +
+							EDIT_CLASS_DESC + BUFFER + EDIT_CLASS);
 	}
 
 	@Override
@@ -54,7 +44,7 @@ public class CourseCoordinatorController extends StaffController {
 					viewEligibleStaff(courseName);
 					break;
 				
-				case VIEW_COURSE_TIMETABLE:
+				case VIEW_TIMETABLE:
 					viewCourseTimetable(courseName);
 					break;
 				

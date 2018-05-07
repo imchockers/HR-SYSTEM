@@ -2,28 +2,17 @@ package control;
 
 public class SessionalController extends StaffController {
 
-	private static final String VIEW_SESSIONAL_TIMETABLE = "timetable";
-	private static final String SUBMIT_AVAILABILITIES = "submitavailabilities";
-	private static final String VIEW_OFFERS = "offers";
-	private static final String ACCEPT_OFFER = "acceptoffer";
-	private static final String REJECT_OFFER = "rejectoffer";
-	private static final String EXIT = "exit";
-	private static final String LOGOUT = "logout";
-	private static final String VIEW_COMMANDS = "commands";
-	
 	public SessionalController(String userID) {
 		super(userID);
 		// TODO Auto-generated constructor stub
 	}
 	
 	private void viewCommands() {
-		super.viewCommands(	VIEW_SESSIONAL_TIMETABLE + "\n" +
-							SUBMIT_AVAILABILITIES + "\n" +
-							VIEW_OFFERS + "\n" +
-							ACCEPT_OFFER + "\n" +
-							REJECT_OFFER + "\n" +
-							VIEW_COMMANDS + "\n" +
-							EXIT);
+		super.viewCommands(	VIEW_SESSIONAL_TIMETABLE_DESC + BUFFER + VIEW_TIMETABLE + "\n" +
+							SUBMIT_AVAILABILITIES_DESC + BUFFER + SUBMIT_AVAILABILITIES + "\n" +
+							VIEW_OFFERS_DESC + BUFFER + VIEW_OFFERS + "\n" +
+							ACCEPT_OFFER_DESC + BUFFER + ACCEPT_OFFER + "\n" +
+							REJECT_OFFER_DESC + BUFFER + REJECT_OFFER);
 	}
 
 
@@ -47,7 +36,7 @@ public class SessionalController extends StaffController {
 					viewCommands();
 					break;
 				
-				case VIEW_SESSIONAL_TIMETABLE:
+				case VIEW_TIMETABLE:
 					viewSessionalTimetable();
 					break;
 				
