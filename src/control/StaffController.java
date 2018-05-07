@@ -53,7 +53,7 @@ public abstract class StaffController implements Commands {
 		
 		int classID = db.inputTimetableData(discipline, course, className);
 		
-		editClass();
+		editClass(classID);
 		
 		privateView.println("New Class Added! ID: " + classID + "\n");
 	}
