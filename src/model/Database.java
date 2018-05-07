@@ -93,18 +93,6 @@ public class Database {
 	public String getCourseTimetable(String courseName) {
 		return ttDb.getCourseTimetable(courseName);
 	}
-
-	/**
-	 * Edits the details of a specified class
-	 * 
-	 * @param classID ID of the class to edit
-	 * @param location location data to change
-	 * @param time time data to change
-	 * @param day day data to change
-	 * @param duration duration data to change
-	public boolean editClass(int classID, String location, String time, String day, int duration) {
-		return ttDb.editClass(classID, location, time, day, duration);
-	}*/
 	
 	/**
 	 * Edits the details of a specified class

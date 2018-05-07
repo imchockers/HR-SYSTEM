@@ -1,9 +1,9 @@
 Discipline,Course,Class Name,Day,Time,Location,Duration,Staff ID,Assigned,Approved,Accepted
 IT,SEF,tute0,MONDAY,11:30,80.04.11,60,e00001,true,true,true
 IT,SEF,tute1,MONDAY,11:30,80.04.11,60,e00003,true,true,false
-IT,SEF,tute2,MONDAY,12:30,80.04.11,60,e00001,true,false,false
+IT,SEF,tute2,MONDAY,14:30,80.04.11,60,e00001,true,false,false
 IT,SEF,tute3,MONDAY,12:30,80.05.11,60,e00003,true,false,false
-IT,SEF,tute4,WEDNESDAY,14:30,80.04.11,60,unassigned,false,false,false
+IT,SEF,tute4,WEDNESDAY,14:30,80.04.11,60,e00001,true,false,false
 IT,SEF,tute5,FRIDAY,08:30,80.04.11,60,unassigned,false,false,false
 IT,SEF,prac0,TUESDAY,09:30,80.04.11,120,unassigned,false,false,false
 IT,SEF,prac1,TUESDAY,12:30,80.04.11,120,unassigned,false,false,false

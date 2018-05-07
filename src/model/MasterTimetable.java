@@ -60,10 +60,33 @@ public class MasterTimetable {
 	 * @return string representations of all classes with pending approvals
 	 */
 	public String getPendingApprovals() {
-		String retStr = new String();
+		ArrayList<ClassInstance> list = new ArrayList<ClassInstance>();
 		
 		for (Discipline d: disciplines)
-			retStr += d.getPendingApprovals();
+			list.addAll(d.getPendingApprovals());
+		
+		String retStr = new String();
+		
+		for (ClassInstance c: list)
+			retStr += c.toString();
+		
+		String clashes = new String("Clashes Found!\n");
+		boolean clash = false;
+		
+		// This is unfortunately O(n^2)
+		for (ClassInstance c1: list) {
+			for (ClassInstance c2: list) {
+				if (c1.getClassID() != c2.getClassID() && 
+					c1.getStatus().getStaff().compareTo(c2.getStatus().getStaff()) == 0 &&
+					c1.getDetails().checkClash(c2.getDetails())) {
+						clash = true;
+						clashes += c1.toString() + c2.toString();
+				}
+			}
+		}
+		
+		if (clash)
+			retStr += "\n" + clashes;
 		
 		return retStr;
 	}
@@ -111,30 +134,6 @@ public class MasterTimetable {
 		
 		return retStr;
 	}
-
-	/**
-	 * Edits the data elements of the class instance
-	 * 
-	 * @param classID unique ID of the class to be edited
-	 * @param location location string of the class
-	 * @param time time of the day in 24hr time
-	 * @param day day of the week
-	 * @param duration duration of the class in minutes
-	 * 
-	 * @return true if successful
-	 
-	public boolean editClass(int classID, String location, String time, String day, int duration) {
-		ClassInstance c = getClass(classID);
-
-		if (c != null) {
-			c.setLocation(location);
-			c.setTime(time);
-			c.setDay(day);
-			c.setDuration(duration);
-			return true;
-		}
-		return false;
-	}*/
 	
 	/**
 	 * Edits the data elements of the class instance

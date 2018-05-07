@@ -95,7 +95,9 @@ public class ClassDetails {
 		LocalTime endTime2 = this.getEndTime();
 		
 		// Check if the times clash
-		if 	(startTime1.isBefore(startTime2) && endTime1.isAfter(startTime2))
+		if (startTime1.equals(startTime2))
+			return true;
+		if (startTime1.isBefore(startTime2) && endTime1.isAfter(startTime2))
 			return true;
 		if (startTime2.isBefore(startTime1)	&& endTime2.isAfter(startTime1))
 			return true;

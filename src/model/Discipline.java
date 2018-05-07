@@ -40,17 +40,17 @@ public class Discipline {
 	}
 
 	/**
-	 * Gets string representations of all classes with pending approvals
+	 * Gets all classes with pending approvals
 	 * 
-	 * @return string representations of all classes with pending approvals
+	 * @return an array all classes with pending approvals
 	 */
-	public String getPendingApprovals() {
-		String retStr = new String();
+	public ArrayList<ClassInstance> getPendingApprovals() {
+		ArrayList<ClassInstance> list = new ArrayList<ClassInstance>();
 		
 		for (Course c: courses)
-			retStr += c.getPendingApprovals();
+			list.addAll(c.getPendingApprovals());
 		
-		return retStr;
+		return list;
 	}
 
 	/**

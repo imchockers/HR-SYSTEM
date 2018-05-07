@@ -38,16 +38,16 @@ public class Course {
 	 * 
 	 * @return string representations of all classes with pending approvals
 	 */
-	public String getPendingApprovals() {
-		String retStr = new String();
+	public ArrayList<ClassInstance> getPendingApprovals() {
+		ArrayList<ClassInstance> list = new ArrayList<ClassInstance>();
 		
 		for (ClassInstance c: classes) {
 			ClassStatus s = c.getStatus();
 			if (s.isAssigned() && !s.isApproved())
-				retStr += c.toString();
+				list.add(c);
 		}
 		
-		return retStr;
+		return list;
 	}
 
 	/**
