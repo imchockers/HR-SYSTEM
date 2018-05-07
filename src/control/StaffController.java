@@ -59,7 +59,7 @@ public abstract class StaffController implements Commands {
 	}
 	
 	public void viewPendingApprovals() {
-		privateView.println("Current Saff Assignments Awaiting Approval:\n");
+		privateView.println("Current Saff Assignments Awaiting Approval:");
 		privateView.println(db.getPendingApprovals() + "\n");
 	}
 	
