@@ -18,20 +18,6 @@ public class Discipline {
 		courses = new ArrayList<Course>();
 		this.name = name;
 	}
-	
-	/**
-	 * Assigned the specified staff member to the specified class
-	 * 
-	 * @param staffID userID of the staff member to assign
-	 * @param classID unique id of the class to assign
-	 */
-	public boolean assignStaffToClass(String staffID, int classID) {
-		for (Course c: courses)
-			if (c.assignStaffToClass(staffID, classID))
-				return true;
-		
-		return false;
-	}
 
 	/**
 	 * Adds a new class to the specified course, creates a new course if the course
@@ -76,36 +62,6 @@ public class Discipline {
 	}
 
 	/**
-	 * Approves the current staff assignment to the specified class
-	 * 
-	 * @param classID unique ID of the class
-	 * 
-	 * @return true if successful
-	 */
-	public boolean approveStaffAssignment(int classID) {
-		for (Course c: courses)
-			if (c.approveStaffAssignment(classID))
-				return true;
-		
-		return false;
-	}
-	
-	/**
-	 * Disapproves the current staff assignment to the specified class
-	 * 
-	 * @param classID unique ID of the class
-	 * 
-	 * @return true if successful
-	 */
-	public boolean disapproveStaffAssignment(int classID) {
-		for (Course c: courses)
-			if (c.disapproveStaffAssignment(classID))
-				return true;
-		
-		return false;
-	}
-
-	/**
 	 * Gets a string representation of all the classes in a specified course
 	 * 
 	 * @return a string representation of all the classes in a specified course
@@ -118,40 +74,6 @@ public class Discipline {
 				retStr += c.getCourseTimetable();
 		
 		return retStr;
-	}
-
-	/**
-	 * Edits the data elements of the class instance
-	 * 
-	 * @param classID unique ID of the class to be edited
-	 * @param location location string of the class
-	 * @param time time of the day in 24hr time
-	 * @param day day of the week
-	 * @param duration duration of the class in minutes
-	 * 
-	 * @return true if successful
-	 */
-	public boolean editClass(int classID, String location, String time, String day, int duration) {
-		for (Course c: courses)
-			if (c.editClass(classID, location, time, day, duration))
-				return true;
-		
-		return false;
-	}
-
-	/**
-	 * Verifies that a class with the specified ID exists
-	 * 
-	 * @param classID id of the class to verify'
-	 * 
-	 * @return true if the class exists false if not
-	 */
-	public boolean verifyClass(int classID) {
-		for (Course c: courses)
-			if (c.verifyClass(classID))
-				return true;
-		
-		return false;
 	}
 
 	/**
@@ -184,38 +106,6 @@ public class Discipline {
 			retStr += c.getOffers(userID);
 		
 		return retStr;
-	}
-
-	/**
-	 * Accepts an offer of the specified class assigned to the specified staff member
-	 * 
-	 * @param classID unique id of the class that is being accepted
-	 * @param staffID userID of the staff member who is accepting the class
-	 * 
-	 * @return true if successful
-	 */
-	public boolean acceptOffer(int classID, String staffID) {
-		for (Course c: courses)
-			if (c.acceptOffer(classID, staffID))
-				return true;
-		
-		return false;
-	}
-
-	/**
-	 * Rejects an offer of the specified class assigned to the specified staff member
-	 * 
-	 * @param classID unique id of the class that is being accepted
-	 * @param staffID userID of the staff member who is accepting the class
-	 * 
-	 * @return true if successful
-	 */
-	public boolean rejectOffer(int classID, String staffID) {
-		for (Course c: courses)
-			if (c.rejectOffer(classID, staffID))
-				return true;
-		
-		return false;
 	}
 
 	public String export() {
