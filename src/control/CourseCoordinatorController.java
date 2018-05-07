@@ -65,4 +65,10 @@ public class CourseCoordinatorController extends StaffController {
 			}	
 		}
 	}
+	
+	@Override
+	public void welcome() {
+		super.welcome();
+		viewCommands();
+	}
 }

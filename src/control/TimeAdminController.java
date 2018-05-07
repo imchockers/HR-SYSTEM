@@ -94,5 +94,11 @@ public class TimeAdminController extends StaffController {
 		}
 		
 	}
+	
+	@Override
+	public void welcome() {
+		super.welcome();
+		viewCommands();
+	}
 
 }

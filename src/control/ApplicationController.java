@@ -7,6 +7,8 @@ public class ApplicationController {
 		
 			StaffController controller = StaffController.logIn();
 			
+			controller.welcome();
+			
 			controller.getCommands();
 		}
 	}

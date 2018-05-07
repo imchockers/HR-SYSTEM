@@ -59,4 +59,10 @@ public class TimeApproverController extends StaffController {
 		
 	}
 	
+	@Override
+	public void welcome() {
+		super.welcome();
+		viewCommands();
+	}
+	
 }

@@ -23,7 +23,9 @@ public abstract class StaffController {
 		return db.logIn(userID, pwd);
 	}
 	
-	public abstract void getCommands();
+	public void getCommands() {
+		
+	}
 	
 	public void viewCommands(String commands) {
 		privateView.println(commands);
@@ -166,6 +168,10 @@ public abstract class StaffController {
 	public void exit() {
 		privateView.println(db.save());
 		System.exit(0);
+	}
+	
+	public void welcome() {
+		privateView.println("Welcome: " + userID);
 	}
 	
 }

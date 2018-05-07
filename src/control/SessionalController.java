@@ -72,5 +72,11 @@ public class SessionalController extends StaffController {
 		}
 		
 	}
+	
+	@Override
+	public void welcome() {
+		super.welcome();
+		viewCommands();
+	}
 
 }
