@@ -233,5 +233,14 @@ public class Course {
 		
 		return retStr;
 	}
+	
+	
+	public ClassInstance getClass(int classID) {
+		for (ClassInstance c: classes)
+			if (c.getClassID() == classID)
+				return c;
+
+		return null;
+	}
 
 }

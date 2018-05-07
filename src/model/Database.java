@@ -172,15 +172,6 @@ public class Database {
 		staffDb.setAvailabilities(userID, availabilities);
 	}
 
-	/**
-	 * 
-	 * @param userID
-	 */
-	public String getStaffMember(String userID) {
-		// TODO - implement Database.getStaffMember
-		throw new UnsupportedOperationException();
-	}
-
 	public String save() {
 		return DatabaseLoader.save(ttDb.export(), staffDb.export());
 	}

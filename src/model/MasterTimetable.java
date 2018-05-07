@@ -21,11 +21,12 @@ public class MasterTimetable {
 	 * @param classID unique id of the class to assign
 	 */
 	public boolean assignStaffToClass(String staffID, int classID) {
-		for (Discipline d: disciplines)
-			if (d.assignStaffToClass(staffID, classID))
-				return true;
+		ClassInstance c = getClass(classID);
 		
+		if (c != null)
+			return c.assignStaff(staffID);
 		return false;
+		
 	}
 
 	/**
@@ -74,10 +75,10 @@ public class MasterTimetable {
 	 * @return true if successful
 	 */
 	public boolean approveStaffAssignment(int classID) {
-		for (Discipline d: disciplines)
-			if (d.approveStaffAssignment(classID))
-				return true;
+		ClassInstance c = getClass(classID);
 		
+		if (c != null)
+			return c.approve();
 		return false;
 	}
 	
@@ -89,10 +90,10 @@ public class MasterTimetable {
 	 * @return true if successful
 	 */
 	public boolean disapproveStaffAssignment(int classID) {
-		for (Discipline d: disciplines)
-			if (d.disapproveStaffAssignment(classID))
-				return true;
+		ClassInstance c = getClass(classID);
 		
+		if (c != null)
+			return c.disapprove();
 		return false;
 	}
 
@@ -122,10 +123,15 @@ public class MasterTimetable {
 	 * @return true if successful
 	 */
 	public boolean editClass(int classID, String location, String time, String day, int duration) {
-		for (Discipline d: disciplines)
-			if (d.editClass(classID, location, time, day, duration))
-				return true;
-		
+		ClassInstance c = getClass(classID);
+
+		if (c != null) {
+			c.setLocation(location);
+			c.setTime(time);
+			c.setDay(day);
+			c.setDuration(duration);
+			return true;
+		}
 		return false;
 	}
 
@@ -137,10 +143,10 @@ public class MasterTimetable {
 	 * @return true if the class exists false if not
 	 */
 	public boolean verifyClass(int classID) {
-		for (Discipline d: disciplines)
-			if (d.verifyClass(classID))
-				return true;
-		
+		ClassInstance c = getClass(classID);
+
+		if (c != null)
+			return true;
 		return false;
 	}
 
@@ -185,10 +191,10 @@ public class MasterTimetable {
 	 * @return true if successful
 	 */
 	public boolean acceptOffer(int classID, String staffID) {
-		for (Discipline d: disciplines)
-			if (d.acceptOffer(classID, staffID))
-				return true;
+		ClassInstance c = getClass(classID);
 		
+		if (c != null)
+			return c.accept(staffID);
 		return false;
 	}
 
@@ -201,10 +207,10 @@ public class MasterTimetable {
 	 * @return true if successful
 	 */
 	public boolean rejectOffer(int classID, String staffID) {
-		for (Discipline d: disciplines)
-			if (d.rejectOffer(classID, staffID))
-				return true;
+		ClassInstance c = getClass(classID);
 		
+		if (c != null)
+			return c.reject(staffID);
 		return false;
 	}
 
@@ -216,5 +222,16 @@ public class MasterTimetable {
 		}
 		
 		return retStr;
+	}
+	
+	public ClassInstance getClass(int classID) {
+		for (Discipline d: disciplines) {
+			ClassInstance ci = d.getClass(classID);
+			
+			if (ci != null)
+				return ci;
+		}
+		
+		return null;
 	}
 }

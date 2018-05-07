@@ -228,4 +228,14 @@ public class Discipline {
 		return retStr;
 	}
 
+	public ClassInstance getClass(int classID) {
+		for (Course c: courses) {
+			ClassInstance ci = c.getClass(classID);
+			
+			if (ci != null)
+				return ci;
+		}
+		return null;
+	}
+
 }
