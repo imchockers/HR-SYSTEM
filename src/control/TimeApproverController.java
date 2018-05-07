@@ -54,6 +54,7 @@ public class TimeApproverController extends StaffController {
 	public void welcome() {
 		super.welcome();
 		viewCommands();
+		viewPendingApprovals();
 	}
 	
 }

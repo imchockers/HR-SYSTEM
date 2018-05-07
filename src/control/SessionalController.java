@@ -66,6 +66,8 @@ public class SessionalController extends StaffController {
 	public void welcome() {
 		super.welcome();
 		viewCommands();
+		viewSessionalTimetable();
+		viewOffers();
 	}
 
 }

@@ -60,5 +60,7 @@ public class CourseCoordinatorController extends StaffController {
 	public void welcome() {
 		super.welcome();
 		viewCommands();
+		viewCourseTimetable(courseName);
+		viewEligibleStaff(courseName);
 	}
 }

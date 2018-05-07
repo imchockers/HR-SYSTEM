@@ -17,7 +17,7 @@ public abstract class StaffController implements Commands {
 	}
 	
 	public static StaffController logIn() {
-		String userID = defaultView.getInput("Enter UserID: ");
+		String userID = defaultView.getInput("Enter User ID: ");
 		String pwd = defaultView.getInput("Enter Password: ");
 		
 		return db.logIn(userID, pwd);
@@ -30,7 +30,7 @@ public abstract class StaffController implements Commands {
 		privateView.println(commands);
 		privateView.println(VIEW_COMMANDS_DESC + BUFFER + VIEW_COMMANDS + "\n" +
 							LOGOUT_DESC + BUFFER + LOGOUT + "\n" +
-							EXIT_DESC + BUFFER + EXIT);
+							EXIT_DESC + BUFFER + EXIT + "\n");
 	}
 	
 	public String getID() { return userID; }
@@ -43,7 +43,7 @@ public abstract class StaffController implements Commands {
 		String staffID = privateView.getInput("Enter user ID: ");
 		int classID = Integer.parseInt(privateView.getInput("Enter Class ID: "));
 		
-		privateView.println(db.assignStaffToClass(staffID, classID));
+		privateView.println(db.assignStaffToClass(staffID, classID) + "\n");
 	}
 	
 	public void inputTimetableData() {
@@ -55,33 +55,35 @@ public abstract class StaffController implements Commands {
 		
 		editClass();
 		
-		privateView.println("New Class Added! ID: " + classID);
+		privateView.println("New Class Added! ID: " + classID + "\n");
 	}
 	
 	public void viewPendingApprovals() {
-		privateView.println(db.getPendingApprovals());
+		privateView.println("Current Saff Assignments Awaiting Approval:\n");
+		privateView.println(db.getPendingApprovals() + "\n");
 	}
 	
 	public void approveStaffAssignment() {
 		int classID = Integer.parseInt(privateView.getInput("Enter Class ID: "));
 
 		if(db.approveStaffAssignment(classID))
-			privateView.println("Approval Successful!");
+			privateView.println("Approval Successful!" + "\n");
 		else
-			privateView.println("Approval Failed!");
+			privateView.println("Approval Failed!" + "\n");
 	}
 	
 	public void disapproveStaffAssignment() {
 		int classID = Integer.parseInt(privateView.getInput("Enter Class ID: "));
 
 		if(db.disapproveStaffAssignment(classID))
-			privateView.println("Disapproval Successful!");
+			privateView.println("Disapproval Successful!" + "\n");
 		else
-			privateView.println("Disapproval Failed!");
+			privateView.println("Disapproval Failed!" + "\n");
 	}
 	
 	public void viewCourseTimetable(String courseName) {
-		privateView.println(db.getCourseTimetable(courseName));
+		privateView.println("Current Course Timetable:");
+		privateView.println(db.getCourseTimetable(courseName) + "\n");
 	}
 	
 	public void editClass() {
@@ -96,35 +98,37 @@ public abstract class StaffController implements Commands {
 		int duration = Integer.parseInt(privateView.getInput("Enter Class Duration in minutes: "));
 		
 		if(db.editClass(classID, location, time, day, duration))
-			privateView.println("Class Details added Successfully!");
+			privateView.println("Class Details added Successfully!" + "\n");
 		else
-			privateView.println("Class Details adding Failed!");
+			privateView.println("Class Details adding Failed!" + "\n");
 	}
 	
 	public void viewSessionalTimetable() {
-		privateView.println(db.getSessionalTimetable(userID));
+		privateView.println("Current Personal Timetable:");
+		privateView.println(db.getSessionalTimetable(userID) + "\n");
 	}
 	
 	public void viewOffers() {
-		privateView.println(db.getOffers(userID));
+		privateView.println("Pending Class Offers:");
+		privateView.println(db.getOffers(userID) + "\n");
 	}
 	
 	public void acceptOffer() {
 		int classID = Integer.parseInt(privateView.getInput("Enter Class ID: "));
 		
 		if(db.acceptOffer(classID, userID))
-			privateView.println("Offer Accepted Successfully!");
+			privateView.println("Offer Accepted Successfully!" + "\n");
 		else
-			privateView.println("Offer Accept Failed!");
+			privateView.println("Offer Accept Failed!" + "\n");
 	}
 	
 	public void rejectOffer() {
 		int classID = Integer.parseInt(privateView.getInput("Enter Class ID: "));
 		
 		if(db.rejectOffer(classID, userID))
-			privateView.println("Offer Rejected Successfully!");
+			privateView.println("Offer Rejected Successfully!" + "\n");
 		else
-			privateView.println("Offer Reject Failed!");
+			privateView.println("Offer Reject Failed!" + "\n");
 		
 	}
 	
@@ -137,13 +141,14 @@ public abstract class StaffController implements Commands {
 		try {
 			privilege = Integer.parseInt(privateView.getInput("Enter Privilege Level (0-3): "));
 		} catch (NumberFormatException e) {
-			privateView.println("NumberFormatException: Enter an integer.");
+			privateView.println("NumberFormatException: Enter an integer." + "\n");
+			return;
 		}
 		
 		if (privilege == 2)
 			courseName = privateView.getInput("Enter Course Name: ");
 		
-		privateView.println(db.createStaff(userID, pwd, null, null, privilege, courseName));
+		privateView.println(db.createStaff(userID, pwd, null, null, privilege, courseName) + "\n");
 	}
 	
 	public void viewEligibleStaff() {
@@ -153,7 +158,8 @@ public abstract class StaffController implements Commands {
 	}
 	
 	public void viewEligibleStaff(String courseName) {
-		privateView.println(db.getEligibleStaff(courseName));
+		privateView.println("Staff Eligible to be Assigned to " + courseName + ":");
+		privateView.println(db.getEligibleStaff(courseName) + "\n");
 	}
 	
 	public void submitAvailabilities() {
@@ -173,7 +179,7 @@ public abstract class StaffController implements Commands {
 	}
 	
 	public void welcome() {
-		privateView.println("Welcome: " + userID);
+		privateView.println("Welcome: " + userID + "\n");
 	}
 	
 }
