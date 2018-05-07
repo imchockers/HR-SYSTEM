@@ -25,7 +25,7 @@ public class MasterTimetable {
 		ClassInstance c = getClass(classID);
 		
 		if (c != null)
-			return c.assignStaff(staffID);
+			return c.getStatus().assignStaff(staffID);
 		return false;
 		
 	}
@@ -79,7 +79,7 @@ public class MasterTimetable {
 		ClassInstance c = getClass(classID);
 		
 		if (c != null)
-			return c.approve();
+			return c.getStatus().approve();
 		return false;
 	}
 	
@@ -94,7 +94,7 @@ public class MasterTimetable {
 		ClassInstance c = getClass(classID);
 		
 		if (c != null)
-			return c.disapprove();
+			return c.getStatus().disapprove();
 		return false;
 	}
 
@@ -219,7 +219,7 @@ public class MasterTimetable {
 		ClassInstance c = getClass(classID);
 		
 		if (c != null)
-			return c.accept(staffID);
+			return c.getStatus().accept(staffID);
 		return false;
 	}
 
@@ -235,7 +235,7 @@ public class MasterTimetable {
 		ClassInstance c = getClass(classID);
 		
 		if (c != null)
-			return c.reject(staffID);
+			return c.getStatus().reject(staffID);
 		return false;
 	}
 

@@ -42,7 +42,8 @@ public class Course {
 		String retStr = new String();
 		
 		for (ClassInstance c: classes) {
-			if (c.isAssigned() && !c.isApproved())
+			ClassStatus s = c.getStatus();
+			if (s.isAssigned() && !s.isApproved())
 				retStr += c.toString();
 		}
 		
@@ -81,7 +82,8 @@ public class Course {
 		String retStr = new String();
 		
 		for (ClassInstance c: classes) {
-			if (c.isAccepted() && c.getStaff().compareTo(userID) == 0)
+			ClassStatus s = c.getStatus();
+			if (s.isAccepted() && s.getStaff().compareTo(userID) == 0)
 				retStr += c.toString();
 		}
 		
@@ -99,7 +101,8 @@ public class Course {
 		String retStr = new String();
 		
 		for (ClassInstance c: classes) {
-			if (!c.isAccepted() && c.isApproved() && c.getStaff().compareTo(userID) == 0)
+			ClassStatus s = c.getStatus();
+			if (!s.isAccepted() && s.isApproved() && s.getStaff().compareTo(userID) == 0)
 				retStr += c.toString();
 		}
 		
