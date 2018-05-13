@@ -1,5 +1,16 @@
 package model;
 
+/**
+ * The state of a class instance
+ * 
+ * @date 13/5/2018
+ * 
+ * @author Lachlan Clulow s3682356
+ * @author Yazeed Othman s3543535
+ * @author Lee Enders s3659667
+ * @author Patrick Tria s3602866
+ *
+ */
 public class ClassStatus {
 
 	/**	Staff member assigned to the class	*/
@@ -109,6 +120,10 @@ public class ClassStatus {
 	 */
 	public boolean isAccepted() { return this.accepted; }
 	
+	/**
+	 * 
+	 * @return a string representation of the class status
+	 */
 	public String export() {
 		String assignStr = new String();
 		String approveStr = new String();
@@ -132,6 +147,9 @@ public class ClassStatus {
 		return String.join(",", this.getStaff(), assignStr, approveStr, acceptStr);
 	}
 	
+	/**
+	 * Sets the class state to unassigned
+	 */
 	private void setUnassigned() {
 		assignedStaff = new String("unassigned");
 		assigned = false;
@@ -139,6 +157,9 @@ public class ClassStatus {
 		accepted = false;
 	}
 	
+	/**
+	 * Sets the class state to assigned
+	 */
 	private void setAssigned(String assignedStaff) {
 		this.assignedStaff = assignedStaff;
 		assigned = true;
@@ -146,12 +167,18 @@ public class ClassStatus {
 		accepted = false;
 	}
 	
+	/**
+	 * Sets the class state to approved
+	 */
 	private void setApproved() {
 		assigned = true;
 		approved = true;
 		accepted = false;
 	}
 	
+	/**
+	 * Sets the class state to accepted
+	 */
 	private void setAccepted() {
 		assigned = true;
 		approved = true;

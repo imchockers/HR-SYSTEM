@@ -1,5 +1,16 @@
 package model;
 
+/**
+ * A single instance of a timetabled class
+ * 
+ * @date 13/5/2018
+ * 
+ * @author Lachlan Clulow s3682356
+ * @author Yazeed Othman s3543535
+ * @author Lee Enders s3659667
+ * @author Patrick Tria s3602866
+ *
+ */
 public class ClassInstance {
 
 	/**	Counter of current number of classInstances, used to set classID	*/
@@ -56,6 +67,10 @@ public class ClassInstance {
 	}
 
 	
+	/**
+	 * 
+	 * @return a string representation of the class instance information
+	 */
 	public String export() {		
 		return String.join(",", details.export(","), status.export());
 	}

@@ -3,6 +3,17 @@ package model;
 import java.time.*;
 import java.util.ArrayList;
 
+/**
+ * The timetable database, contains a list of disciplines
+ * 
+ * @date 13/5/2018
+ * 
+ * @author Lachlan Clulow s3682356
+ * @author Yazeed Othman s3543535
+ * @author Lee Enders s3659667
+ * @author Patrick Tria s3602866
+ *
+ */
 public class MasterTimetable {
 
 	/**	List of Disciplines that belong to this Timetable	*/
@@ -238,6 +249,9 @@ public class MasterTimetable {
 		return false;
 	}
 
+	/**
+	 * @return a string representation of the disciplines within the database
+	 */
 	public String export() {
 		String retStr = new String();
 		
@@ -248,6 +262,12 @@ public class MasterTimetable {
 		return retStr;
 	}
 	
+	/**
+	 * Gets a class from within the timetable with a specified ID
+	 * 
+	 * @param classID ID of class to get
+	 * @return the specified classInstance or null
+	 */
 	public ClassInstance getClass(int classID) {
 		for (Discipline d: disciplines) {
 			ClassInstance ci = d.getClass(classID);

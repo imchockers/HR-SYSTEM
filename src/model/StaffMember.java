@@ -1,5 +1,16 @@
 package model;
 
+/**
+* Represents a single staff member
+* 
+* @date 13/5/2018
+* 
+* @author Lachlan Clulow s3682356
+* @author Yazeed Othman s3543535
+* @author Lee Enders s3659667
+* @author Patrick Tria s3602866
+*
+*/
 public class StaffMember {
 
 	/**	Unique userID associated with a staff member	*/
@@ -118,7 +129,10 @@ public class StaffMember {
 		this.password = password;
 	}
 
-
+	/**
+	 * 
+	 * @return a string representation of this user account
+	 */
 	public String export() {
 		String retStr = new String();
 		

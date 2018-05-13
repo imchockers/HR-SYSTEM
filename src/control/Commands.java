@@ -1,5 +1,16 @@
 package control;
 
+/**
+ * All default command string formats and descriptions
+ * 
+ * @date 13/5/2018
+ * 
+ * @author Lachlan Clulow s3682356
+ * @author Yazeed Othman s3543535
+ * @author Lee Enders s3659667
+ * @author Patrick Tria s3602866
+ *
+ */
 public interface Commands {
 
 	public static final String VIEW_TIMETABLE = "timetable";

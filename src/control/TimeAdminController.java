@@ -1,11 +1,32 @@
 package control;
 
+
+/**
+ * Controller used by Time Admin staff members upon login
+ * 
+ * @date 13/5/2018
+ * 
+ * @author Lachlan Clulow s3682356
+ * @author Yazeed Othman s3543535
+ * @author Lee Enders s3659667
+ * @author Patrick Tria s3602866
+ *
+ */
 public class TimeAdminController extends StaffController implements Approval, Coordination {
 	
+	/**
+	 * Default constructor
+	 * 
+	 * @param userID ID of the current logged in user
+	 */
 	public TimeAdminController(String userID) {
 		super(userID);
 	}
 	
+	/**
+	 * Prints commands available to this controller
+	 * 
+	 */
 	private void viewCommands() {
 		super.viewCommands(	INPUT_TIMETABLE_DATA_DESC + BUFFER + INPUT_TIMETABLE_DATA + "\n" +
 							CREATE_STAFF_DESC + BUFFER + CREATE_STAFF + "\n" +
@@ -87,6 +108,9 @@ public class TimeAdminController extends StaffController implements Approval, Co
 		viewPendingApprovals(getView(), getDatabase());
 	}
 	
+	/**
+	 * Gets user input to create a new entry in the timetable
+	 */
 	public void inputTimetableData() {
 		String discipline = getView().getInput("Enter Discipline Name: ");
 		String course = getView().getInput("Enter Course Name: ");
@@ -99,6 +123,9 @@ public class TimeAdminController extends StaffController implements Approval, Co
 		getView().println("New Class Added! ID: " + classID + "\n");
 	}
 	
+	/**
+	 * Get user input to create a new staff account
+	 */
 	public void createStaff() {
 		String userID = getView().getInput("Enter new staff UserID: ");
 		String pwd = getView().getInput("Enter Password (>=8 characters): ");
@@ -118,6 +145,9 @@ public class TimeAdminController extends StaffController implements Approval, Co
 		getView().println(getDatabase().createStaff(userID, pwd, null, null, privilege, courseName) + "\n");
 	}
 	
+	/**
+	 * Gets user input and views eligible staff from a specified course
+	 */
 	public void viewEligibleStaff() {
 		String courseName = getView().getInput("Enter Course Name: ");
 

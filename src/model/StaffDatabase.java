@@ -3,10 +3,23 @@ package model;
 import java.util.ArrayList;
 import control.*;
 
+/**
+* The staff database, contains a list of staffmembers
+* 
+* @date 13/5/2018
+* 
+* @author Lachlan Clulow s3682356
+* @author Yazeed Othman s3543535
+* @author Lee Enders s3659667
+* @author Patrick Tria s3602866
+*
+*/
 public class StaffDatabase {
 
+	/**	All active staff members	*/
 	private ArrayList<StaffMember> staff;
 
+	/**	Default constructor	*/
 	StaffDatabase() {
 		staff = new ArrayList<StaffMember>();
 	}
@@ -34,9 +47,9 @@ public class StaffDatabase {
 	}
 	
 	/**
+	 * Gets a specified user account from staff
 	 * 
-	 * 
-	 * @param userID
+	 * @param userID ID of the specified user account
 	 */
 	public StaffController logIn(String userID) {
 		for (StaffMember s: staff)
@@ -139,15 +152,19 @@ public class StaffDatabase {
 	}
 
 	/**
+	 * Gets a staff member from the staff kust
 	 * 
-	 * 
-	 * @param userID
+	 * @param userID ID of specified staff member
 	 */
 	public String getStaffMember(String userID) {
 		// TODO - implement StaffDatabase.getStaffMember
 		throw new UnsupportedOperationException();
 	}
 
+	/**
+	 * 
+	 * @return a string representation of all the staff members in the database
+	 */
 	public String export() {
 		String retStr = new String();
 		

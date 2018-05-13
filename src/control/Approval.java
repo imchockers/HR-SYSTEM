@@ -3,13 +3,36 @@ package control;
 import model.Database;
 import view.ConsoleView;
 
+/**
+ * Approval interface, contains default approval methods
+ * 
+ * @date 13/5/2018
+ * 
+ * @author Lachlan Clulow s3682356
+ * @author Yazeed Othman s3543535
+ * @author Lee Enders s3659667
+ * @author Patrick Tria s3602866
+ *
+ */
 public interface Approval {
 
+	/**
+	 * Presents a view of a list of pending staff assignment approvals
+	 * 
+	 * @param privateView view to output to
+	 * @param db database to query
+	 */
 	public default void viewPendingApprovals(ConsoleView privateView, Database db) {
 		privateView.println("Current Saff Assignments Awaiting Approval:");
 		privateView.println(db.getPendingApprovals() + "\n");
 	}
 	
+	/**
+	 * Gets input from a user and approves a specified class staff assignment
+	 * 
+	 * @param privateView view to output to
+	 * @param db database to query
+	 */
 	public default void approveStaffAssignment(ConsoleView privateView, Database db) {
 		int classID = Integer.parseInt(privateView.getInput("Enter Class ID: "));
 
@@ -19,6 +42,12 @@ public interface Approval {
 			privateView.println("Approval Failed!" + "\n");
 	}
 	
+	/**
+	 * Gets input from a user and disapproves a specified class staff assignment
+	 * 
+	 * @param privateView view to output to
+	 * @param db database to query
+	 */
 	public default void disapproveStaffAssignment(ConsoleView privateView, Database db) {
 		int classID = Integer.parseInt(privateView.getInput("Enter Class ID: "));
 

@@ -4,6 +4,17 @@ import java.time.*;
 import java.time.format.TextStyle;
 import java.util.Locale;
 
+/**
+ * Details regarding the running of a ClassInstance
+ * 
+ * @date 13/5/2018
+ * 
+ * @author Lachlan Clulow s3682356
+ * @author Yazeed Othman s3543535
+ * @author Lee Enders s3659667
+ * @author Patrick Tria s3602866
+ *
+ */
 public class ClassDetails {
 
 	/**	ClassInstance name	*/
@@ -105,6 +116,11 @@ public class ClassDetails {
 		return false;
 	}
 
+	/**
+	 * 
+	 * @param delimiter delimiter to separate elements of the class details
+	 * @return a string representation of the class
+	 */
 	public String export(String delimiter) {
 		return String.join(delimiter, this.getName(), 
 				this.getDay().getDisplayName(TextStyle.FULL, Locale.getDefault()).toUpperCase(),

@@ -2,6 +2,17 @@ package model;
 
 import java.util.ArrayList;
 
+/**
+ * A timetable discipline, contains a list of courses
+ * 
+ * @date 13/5/2018
+ * 
+ * @author Lachlan Clulow s3682356
+ * @author Yazeed Othman s3543535
+ * @author Lee Enders s3659667
+ * @author Patrick Tria s3602866
+ *
+ */
 public class Discipline {
 
 	/**	List of courses that belong to this Discipline	*/
@@ -108,6 +119,9 @@ public class Discipline {
 		return retStr;
 	}
 
+	/**
+	 * @return a string representation of the courses inside this discipline
+	 */
 	public String export() {
 		String retStr = new String();
 		
@@ -118,6 +132,12 @@ public class Discipline {
 		return retStr;
 	}
 
+	/**
+	 * Gets a class from within this discipline with a specified ID
+	 * 
+	 * @param classID ID of class to get
+	 * @return the specified classInstance or null
+	 */
 	public ClassInstance getClass(int classID) {
 		for (Course c: courses) {
 			ClassInstance ci = c.getClass(classID);
