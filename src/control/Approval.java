@@ -1,6 +1,6 @@
 package control;
 
-import model.Database;
+import model.Data;
 import view.ConsoleView;
 
 /**
@@ -22,7 +22,7 @@ public interface Approval {
 	 * @param privateView view to output to
 	 * @param db database to query
 	 */
-	public default void viewPendingApprovals(ConsoleView privateView, Database db) {
+	public default void viewPendingApprovals(ConsoleView privateView, Data db) {
 		privateView.println("Current Saff Assignments Awaiting Approval:");
 		privateView.println(db.getPendingApprovals() + "\n");
 	}
@@ -33,7 +33,7 @@ public interface Approval {
 	 * @param privateView view to output to
 	 * @param db database to query
 	 */
-	public default void approveStaffAssignment(ConsoleView privateView, Database db) {
+	public default void approveStaffAssignment(ConsoleView privateView, Data db) {
 		int classID = Integer.parseInt(privateView.getInput("Enter Class ID: "));
 
 		if(db.approveStaffAssignment(classID))
@@ -48,7 +48,7 @@ public interface Approval {
 	 * @param privateView view to output to
 	 * @param db database to query
 	 */
-	public default void disapproveStaffAssignment(ConsoleView privateView, Database db) {
+	public default void disapproveStaffAssignment(ConsoleView privateView, Data db) {
 		int classID = Integer.parseInt(privateView.getInput("Enter Class ID: "));
 
 		if(db.disapproveStaffAssignment(classID))

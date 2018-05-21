@@ -1,4 +1,5 @@
 package control;
+import Exceptions.InvalidLoginException;
 
 /**
  * Main Application controller
@@ -18,11 +19,13 @@ public class ApplicationController {
 	public static void main(String[] args) {
 		while (true) {
 		
+			try {
 			StaffController controller = StaffController.logIn();
-			
 			controller.welcome();
-			
 			controller.getCommands();
+			} catch (InvalidLoginException e) {
+				System.out.println("Invalid Login! Try Again.");
+			}
 		}
 	}
 

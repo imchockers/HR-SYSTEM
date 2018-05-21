@@ -2,7 +2,7 @@ package control;
 
 import java.time.*;
 
-import model.Database;
+import model.Data;
 import view.ConsoleView;
 
 /**
@@ -24,7 +24,7 @@ public interface Coordination {
 	 * @param privateView view to output to
 	 * @param db database to query
 	 */
-	public default void assignStaffToClass(ConsoleView privateView, Database db) {
+	public default void assignStaffToClass(ConsoleView privateView, Data db) {
 		String staffID = privateView.getInput("Enter user ID: ");
 		int classID = Integer.parseInt(privateView.getInput("Enter Class ID: "));
 		
@@ -38,7 +38,7 @@ public interface Coordination {
 	 * @param db database to query
 	 * @param courseName name of the course timetable to view
 	 */
-	public default void viewCourseTimetable(ConsoleView privateView, Database db, String courseName) {
+	public default void viewCourseTimetable(ConsoleView privateView, Data db, String courseName) {
 		privateView.println("Current Course Timetable:");
 		privateView.println(db.getCourseTimetable(courseName) + "\n");
 	}
@@ -50,7 +50,7 @@ public interface Coordination {
 	 * @param db database to query
 	 * @param courseName name of the course staff should be eligible for
 	 */
-	public default void viewEligibleStaff(ConsoleView privateView, Database db, String courseName) {
+	public default void viewEligibleStaff(ConsoleView privateView, Data db, String courseName) {
 		privateView.println("Staff Eligible to be Assigned to " + courseName + ":");
 		privateView.println(db.getEligibleStaff(courseName) + "\n");
 	}
@@ -61,7 +61,7 @@ public interface Coordination {
 	 * @param privateView view to output to
 	 * @param db database to query
 	 */
-	public default void editClass(ConsoleView privateView, Database db) {
+	public default void editClass(ConsoleView privateView, Data db) {
 		int classID = Integer.parseInt(privateView.getInput("Enter Class ID: "));
 		editClass(privateView, db, classID);
 	}
@@ -73,7 +73,7 @@ public interface Coordination {
 	 * @param db database to query
 	 * @param classID ID of class to edit
 	 */
-	public default void editClass(ConsoleView privateView, Database db, int classID) {
+	public default void editClass(ConsoleView privateView, Data db, int classID) {
 		String location = privateView.getInput("Enter Location (xx.xx.xx): ");
 		LocalTime time = LocalTime.parse(privateView.getInput("Enter Time 24hr time HH:MM: "));
 		DayOfWeek day = DayOfWeek.valueOf(privateView.getInput("Enter day of the week (MONDAY,TUESDAY,WEDNESDAY,THURSDAY,FRIDAY): ").toUpperCase());

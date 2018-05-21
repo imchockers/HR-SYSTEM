@@ -1,10 +1,12 @@
 package model;
 
+import java.io.FileNotFoundException;
 import java.time.*;
 
+import Exceptions.InvalidLoginException;
 import control.StaffController;
 
-public class Database {
+public class Data {
 
 	/**	Master timetable, contains all class data	*/
 	private MasterTimetable ttDb;
@@ -14,12 +16,18 @@ public class Database {
 	/**
 	 * Default constructor
 	 */
-	public Database() {
+	public Data() {
 		System.out.println("Loading timetable data...");
-		ttDb = DatabaseLoader.loadTimetable();
-		System.out.println("Timetable Loaded.");
-		System.out.println("Loading staff data...");
-		staffDb = DatabaseLoader.loadStaff();
+		try {
+			ttDb = DatabaseLoader.loadTimetable();
+			System.out.println("Timetable Loaded.");
+			System.out.println("Loading staff data...");
+			staffDb = DatabaseLoader.loadStaff();
+		} catch (FileNotFoundException e) {
+			System.out.println("Failed Loading Data: Files Missing");
+			e.printStackTrace();
+			System.exit(0);
+		}
 		System.out.println("Staff Loaded.");
 	}
 
@@ -31,11 +39,11 @@ public class Database {
 	 * 
 	 * @return controller associated with the user account
 	 */
-	public StaffController logIn(String userID, String password) {
+	public StaffController logIn(String userID, String password) throws InvalidLoginException {
 		if (staffDb.verifyLogin(userID, password))
 			return staffDb.logIn(userID);
 		else 
-			return null;
+			throw new InvalidLoginException();
 	}
 	
 	/**

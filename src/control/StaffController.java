@@ -1,6 +1,7 @@
 package control;
 
-import model.Database;
+import Exceptions.InvalidLoginException;
+import model.Data;
 import view.ConsoleView;
 
 /**
@@ -17,7 +18,7 @@ import view.ConsoleView;
 public abstract class StaffController implements Commands {
 	
 	/**	Database containing all staff and timetable data	*/
-	private static Database db = new Database();
+	private static Data db = new Data();
 	/**	Default input output stream	*/
 	private static ConsoleView defaultView = new ConsoleView(System.in, System.out);
 	/**	Private input output stream associated with the current logged in user	*/
@@ -40,11 +41,12 @@ public abstract class StaffController implements Commands {
 	 * Gets user account details from user and attempts to log in
 	 * 
 	 * @return Staff Controller associated with the user account logging in
+	 * @throws InvalidLoginException 
 	 */
-	public static StaffController logIn() {
+	public static StaffController logIn() throws InvalidLoginException {
 		String userID = defaultView.getInput("Enter User ID: ");
 		String pwd = defaultView.getInput("Enter Password: ");
-		
+
 		return db.logIn(userID, pwd);
 	}
 	
@@ -69,7 +71,7 @@ public abstract class StaffController implements Commands {
 	 * 
 	 * @return the database containing staff and timetable data
 	 */
-	public Database getDatabase() { return db; }
+	public Data getDatabase() { return db; }
 	
 	/**
 	 * Prints user commands associated with the current users privilege and default commands
