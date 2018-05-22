@@ -1,17 +1,16 @@
 package model;
 
 import static org.junit.Assert.*;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 import Exceptions.InvalidLoginException;
 
 public class DataTest {
 
-	Data db;
+	static Data db;
 	
-	@Before
-	public void setUp() throws Exception {
+	@BeforeClass
+	public static void setUp() throws Exception {
 		db = new Data();
 	}
 
