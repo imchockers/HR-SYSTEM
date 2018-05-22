@@ -11,7 +11,6 @@ How to use:
   - Once logged in:
     - enter "commands" to view a list of available commands.
     - respond to prompts to complete required task.
-    - enter exit to logout.
+    - enter logout to log out.
     
-  - Enter 
   - All modify operations will permanently affect data in the .data files if program is closed correctly
